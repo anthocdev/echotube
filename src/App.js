@@ -1,5 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
+import Header from './modules/Header'
+import {Alert} from 'react-bootstrap';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 class App extends React.Component {
@@ -7,10 +10,8 @@ class App extends React.Component {
 
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
+      <div>
+        <Header/>
       </div>
     );
   }
