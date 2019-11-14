@@ -1,6 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 3001
+const express = require("express");
+const apiRouter = require("./Routes");
 
-app.get('/', (req, res) => res.send('Hello'))
-app.listen(port, () => console.log(`Test server listening on port ${port}`))
+const app = express();
+const port = 3001;
+
+app.use("/api/", apiRouter);
+
+app.get("/", (req, res) => res.send("Hello"));
+app.listen(port, () =>
+  console.log(`Test API server listening on port ${port}`)
+);
