@@ -1,21 +1,13 @@
 const mysql = require("mysql");
 const dbConfig = require("./Config/dbConfig");
 
-const pool = mysql.createPool({
-  connectionLimit: dbConfig.connectionLimit,
-  password: dbConfig.password,
-  user: dbConfig.user,
-  database: dbConfig.database,
-  host: dbConfig.host,
-  port: dbConfig.port
-});
+const pool = mysql.createPool(dbConfig); //Read in database configuration to define mysql pool
 
-console.log(dbConfig);
 let echodb = {};
 
 /* #region GET Methods */
 
-//Query all users in database (Testing purposes)
+//Query all users in database (Prototyping/Testing purposes)
 echodb.allUsers = () => {
   return new Promise((resolve, reject) => {
     pool.query("SELECT * FROM users", (err, results) => {
