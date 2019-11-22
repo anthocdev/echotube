@@ -3,6 +3,8 @@ const db = require("./database");
 
 var router = express.Router();
 
+/* GET ROUTES */
+
 router.get("/test/", async (req, res, next) => {
   res.json("Welcome to EchoTube API, this is a test json return function.");
 });
@@ -71,5 +73,17 @@ router.get("/Video/:id", async (req, res, next) => {
     res.sendStatus(500);
   }
 });*/
+
+/* POST ROUTES */
+
+router.post("/Playlist/:id", async (req, res, next) => {
+  try {
+    let action = await db.postVideoToPlaylistId(req.params.id, req.body);
+    res.json({ response: "SUCCESS" });
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+});
 
 module.exports = router;

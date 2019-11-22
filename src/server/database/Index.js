@@ -84,4 +84,38 @@ echodb.videoById = id => {
 };
 /* #endregion */
 
+/* #region POST Methods */
+
+//Post a video to a playlist by playlist ID
+echodb.postVideoToPlaylistId = (id, data) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      "INSERT INTO videos (Name, Description, ChannelName, ChannelId, VideoLink) Values(?, ?, ?, ?, ?)",
+      [
+        data.videoName,
+        data.videoDescription,
+        data.channelName,
+        data.channelId,
+        data.videoLink
+      ],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        pool.query(
+          "INSERT INTO playlistvideo (playlists_PlaylistID, videos_VideoID) Values(?, ?)",
+          [id, results.insertId],
+          (err, newResults) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(newResults);
+          }
+        );
+      }
+    );
+  });
+};
+
+/* #endregion */
 module.exports = echodb;
