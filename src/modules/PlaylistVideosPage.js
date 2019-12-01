@@ -3,17 +3,25 @@ import Videos from "./containers/Videos";
 import { connect } from "react-redux";
 import { getPlaylistVideos } from "../actions/EchoApiActions";
 import AddVideoForm from "./containers/Forms/AddVideoForm";
-
+import { updatePlaybackQueue } from "../actions/playback";
 class PlaylistVideosPage extends React.Component {
   componentDidMount() {
     const { params } = this.props.match;
     this.props.dispatch(getPlaylistVideos(params._id)); //Fetch user playlists by their id
   }
 
+  addVideos() {
+    {
+      this.props.playlistVideosData.map((item, index) =>
+        this.props.dispatch(updatePlaybackQueue(item))
+      );
+    }
+  }
   render() {
     return (
       <div>
         <h1> Videos </h1>
+        <button onClick={() => this.addVideos()}>Add Videos to Queue</button>
         <Videos videos={this.props.playlistVideosData} />
         <AddVideoForm pageId={this.props.match.params._id} />
       </div>
@@ -24,7 +32,8 @@ class PlaylistVideosPage extends React.Component {
 function mapStateToProps(state, props) {
   if (props.match.params._id) {
     return {
-      playlistVideosData: state.userPlaylistVideos.playlistVideoData
+      playlistVideosData: state.userPlaylistVideos.playlistVideoData,
+      player: state.player
     };
   }
 }

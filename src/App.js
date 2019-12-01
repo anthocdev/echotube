@@ -6,12 +6,15 @@ import UserPlaylistsPage from "./modules/UserPlaylistsPage";
 import PlaylistVideosPage from "./modules/PlaylistVideosPage";
 import Header from "./modules/Header";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./style/player.css";
+import Player from "./modules/containers/Player";
+import player from "./reducers/player";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div className="Main">
+        <Player />
         <div>
           <Header />
         </div>
