@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/* User detail display card */
+
 export default function UserCard({ user }) {
   return (
     <div className="card">

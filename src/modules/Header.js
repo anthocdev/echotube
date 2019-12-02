@@ -33,7 +33,7 @@ class Header extends React.Component {
         </Navbar.Collapse>
       </Navbar>
     );
-  }
+  } //Using bootstrap navbar for basic UI example
 }
 
 const mapStateToProps = store => {

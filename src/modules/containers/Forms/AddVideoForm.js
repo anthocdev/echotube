@@ -48,7 +48,6 @@ class AddVideoForm extends React.Component {
     if (this.props.postVideo.posted) {
       alert("Successfully Added Video - " + { videoName });
     }
-    // this.props.dispatch(getPlaylistVideos(this.props.pageId));
   };
 
   postVid(video) {

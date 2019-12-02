@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { getPlaylistVideos } from "../actions/EchoApiActions";
 import AddVideoForm from "./containers/Forms/AddVideoForm";
 import { updatePlaybackQueue } from "../actions/playback";
+
+/* Playlist video page class for displaying all videos within user playlist, with functionalities of adding items to player queue */
 class PlaylistVideosPage extends React.Component {
   componentDidMount() {
     const { params } = this.props.match;
@@ -22,7 +24,10 @@ class PlaylistVideosPage extends React.Component {
       <div>
         <h1> Videos </h1>
         <button onClick={() => this.addVideos()}>Add Videos to Queue</button>
-        <Videos videos={this.props.playlistVideosData} />
+        <Videos
+          videos={this.props.playlistVideosData}
+          dispatch={this.props.dispatch}
+        />
         <AddVideoForm pageId={this.props.match.params._id} />
       </div>
     );

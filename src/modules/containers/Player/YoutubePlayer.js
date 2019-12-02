@@ -1,9 +1,16 @@
 import React from "react";
 import Youtube from "react-youtube";
 import { connect } from "react-redux";
+import { setPlayingIndex } from "../../../actions/playback";
+
+/* YouTube video player instance*/
 class YoutubePlayer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      index: 0
+    };
   }
 
   componentDidMount() {}
@@ -11,8 +18,8 @@ class YoutubePlayer extends React.Component {
   render() {
     //Defining options for YouTube player
     const opts = {
-      height: 640,
-      width: 1080,
+      height: 320,
+      width: 540,
       playerVars: {
         autoplay: 1
       }
@@ -30,16 +37,18 @@ class YoutubePlayer extends React.Component {
   }
 
   onReady(event) {
-    event.target.pauseVideo();
+    event.target.playVideo();
   }
 
-  onEnd(event) {}
+  onEnd(event) {
+    //To be implemented -> Play next video
+  }
 }
 
 function mapStateToProps(state, props) {
   return {
-    playlistVideosData: state.playlist.playlistVideoData,
-    playlistLoaded: state.playlist.fetching
+    playbackItems: state.player.playbackItems,
+    currentIndex: state.player.currentIndex
   };
 }
 

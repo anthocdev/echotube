@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+/* User playlist card containing display and details for playlist object */
 export default function UserPlaylistCard({ playlist }) {
   return (
     <div className="card">

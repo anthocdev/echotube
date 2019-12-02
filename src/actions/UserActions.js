@@ -1,7 +1,8 @@
 import axios from "axios";
+const APIDOMAIN = "http://localhost:3001";
 
 export function fetchUsers() {
-  const userList = "http://localhost:3001/api/users/";
+  const userList = `${APIDOMAIN}/api/users/`;
 
   return function(dispatch) {
     dispatch({ type: "FETCH_USERS_START" });

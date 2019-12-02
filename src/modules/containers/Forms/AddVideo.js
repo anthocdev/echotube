@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getVideoInfo } from "../../../actions/YoutubeApiActions";
-//Input for reading video link
+//Input for reading video link / Section of entire form
 
 function AddVideo(props) {
   if (props.currentStep !== 1) {
@@ -17,8 +17,8 @@ function AddVideo(props) {
         name="videoLink"
         type="text"
         placeholder="Enter video ID"
-        value={props.videoLink} // Prop: The email input data
-        onChange={props.handleChange} // Prop: Puts data into state
+        value={props.videoLink} // Prop: The video-link input data
+        onChange={props.handleChange} // Handles changes
       />
     </div>
   );

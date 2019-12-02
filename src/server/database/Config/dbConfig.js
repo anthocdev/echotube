@@ -1,4 +1,4 @@
-//Configuration file for database connection
+//Configuration file for database connection / Not pushed into git repo 
 
 const dbConfig = {
   connectionLimit: 10,

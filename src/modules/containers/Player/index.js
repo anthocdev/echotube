@@ -2,9 +2,10 @@ import React from "react";
 import VideoItem from "./VideoItem";
 import CardColumns from "react-bootstrap/Card";
 import YoutubePlayer from "./YoutubePlayer";
-import { togglePlayer } from "../../../actions/playback";
+import { togglePlayer, setPlayingIndex } from "../../../actions/playback";
 import { connect } from "react-redux";
-import { Collapse } from "react-bootstrap";
+
+/* Player overlay with YouTube iframe and custom video listing column */
 
 class Player extends React.PureComponent {
   constructor(props) {
@@ -17,6 +18,8 @@ class Player extends React.PureComponent {
   };
 
   selectVideo = (index, videoLink) => {
+    this.props.dispatch(setPlayingIndex(index));
+
     this.setState({
       currentlyPlaying: videoLink,
       playIndex: index
@@ -25,7 +28,7 @@ class Player extends React.PureComponent {
 
   togglePlayer() {
     this.setState({ showPlayer: !this.state.showPlayer });
-  }
+  } //Toggling player visibility state
 
   render() {
     const playerVisible = this.props.player.isVisible;
@@ -42,10 +45,10 @@ class Player extends React.PureComponent {
           </CardColumns>
         ))}
       </div>
-    );
+    ); //Generate video list by mapping data from playbackItems state
 
     const playerContainer = (
-      <div>
+      <div className="playerMain">
         {" "}
         <div className="left-container">
           <YoutubePlayer
@@ -54,21 +57,27 @@ class Player extends React.PureComponent {
           />
         </div>
         <div className="right-container">
-          <div className="playlistColumn">{mapVideos}</div>
+          <div className="playlistColumn">
+            {this.props.player.playbackItems.length > 0 ? (
+              mapVideos
+            ) : (
+              <div>No videos available</div>
+            )}
+          </div>
         </div>
       </div>
     );
 
     return (
       <div>
-        <div className="playerMain">
-          <button
-            className="PlayerButton"
-            onClick={() => this.props.dispatch(togglePlayer(playerVisible))}
-          >
-            {/*Change playerVisible property*/}
-            Toggle Player
-          </button>
+        <button
+          className="PlayerButton"
+          onClick={() => this.props.dispatch(togglePlayer(playerVisible))}
+        >
+          {/*Change playerVisible property*/}
+          Toggle Player
+        </button>
+        <div className="Main">
           {playerVisible ? playerContainer : <div></div>}
           {/*Display player container based on playerVisible property*/}
         </div>

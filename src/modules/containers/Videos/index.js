@@ -1,12 +1,13 @@
 import React from "react";
 import UserVideoCard from "./VideoCard";
-export default function Videos({ videos }) {
+/* Function for displaying list of videos using video cards */
+export default function Videos({ videos, dispatch }) {
   const noVideosMessage = <p>No videos found in this playlist.</p>;
 
   const playlistVideoList = (
     <div className="card">
       {videos.map(video => (
-        <UserVideoCard video={video} key={video.VideoID} />
+        <UserVideoCard video={video} dispatch={dispatch} key={video.VideoID} />
       ))}
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import UserPlaylistCard from "./UserPlaylistCard";
+/* function for displaying user playlists using playlist cards */
 export default function UserPlaylists({ playlists }) {
   const noPlaylistsMessage = (
     <p>No playlists found in database for this user.</p>

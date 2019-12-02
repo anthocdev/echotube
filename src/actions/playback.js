@@ -15,3 +15,12 @@ export function updatePlaybackQueue(items) {
     });
   };
 }
+
+export function setPlayingIndex(index) {
+  return function(dispatch) {
+    dispatch({
+      type: "SET_ACTIVE_ITEM",
+      payload: index
+    });
+  };
+}

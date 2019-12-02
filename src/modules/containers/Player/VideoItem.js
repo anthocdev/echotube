@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+/* Display card for video items within player overlay */
 
 export default function VideoItem({ index, video, selectedVideo }) {
   return (

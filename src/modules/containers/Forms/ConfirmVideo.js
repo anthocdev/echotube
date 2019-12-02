@@ -1,4 +1,4 @@
-//Confirm adding the video after -> submit
+//Confirm adding the video after submission / Last step of the Add-Video form
 import React from "react";
 import VideoCard from "../YouTube/YoutubeVideoCard";
 function SubmitVideo(props) {

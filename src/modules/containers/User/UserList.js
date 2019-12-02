@@ -1,5 +1,6 @@
 import React from "react";
 import UserCard from "./UserCard";
+/* Function for displayling list of users using usercards */
 export default function UserList({ users }) {
   const noUsersMessage = <p>No users found in database.</p>;
 

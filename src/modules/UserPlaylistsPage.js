@@ -2,7 +2,7 @@ import React from "react";
 import UserPlaylists from "./containers/UserPlaylists";
 import { connect } from "react-redux";
 import { getUserPlaylists } from "../actions/EchoApiActions";
-
+/* Page for displaying playlists of chosen user */
 class UserPlaylistsPage extends React.Component {
   componentDidMount() {
     const { params } = this.props.match;

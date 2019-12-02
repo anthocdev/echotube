@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchPlaylist } from "../actions/YoutubeApiActions";
 import { getUserPlaylists } from "../actions/EchoApiActions";
-
+/* Testing class for parsing youtube playlists using Actions & Reducers */
 class Playlist extends React.Component {
   componentDidMount() {}
 

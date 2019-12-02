@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import UserList from "./containers/User/UserList";
 import { fetchUsers } from "../actions/UserActions";
-
+/* Page for displaying users stored in the server */
 class UserPage extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchUsers());
