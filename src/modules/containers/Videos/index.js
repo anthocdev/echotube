@@ -5,7 +5,7 @@ export default function Videos({ videos, dispatch }) {
   const noVideosMessage = <p>No videos found in this playlist.</p>;
 
   const playlistVideoList = (
-    <div className="card">
+    <div className="btn">
       {videos.map(video => (
         <UserVideoCard video={video} dispatch={dispatch} key={video.VideoID} />
       ))}

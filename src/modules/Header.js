@@ -13,23 +13,31 @@ class Header extends React.Component {
   render() {
     return (
       <Navbar bg="light" expand="lg">
-        <LinkContainer to="/">
+        <LinkContainer
+          style={{
+            color: "purple",
+            fontWeight: "1"
+          }}
+          to="/"
+        >
           <Navbar.Brand>EchoTube</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer to="/">
+            <LinkContainer
+              style={{ paddingRight: "10px", cursor: "pointer" }}
+              to="/"
+            >
               <NavItem>Home</NavItem>
             </LinkContainer>
-            <LinkContainer to="/users">
+            <LinkContainer
+              style={{ paddingRight: "10px", cursor: "pointer" }}
+              to="/users"
+            >
               <NavItem>Users</NavItem>
             </LinkContainer>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
     );

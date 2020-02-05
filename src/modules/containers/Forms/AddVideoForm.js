@@ -122,7 +122,7 @@ class AddVideoForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Add Video Form</h1>
+        <h1 style={{ color: "purple" }}>Add Video</h1>
         <p>Step {this.state.currentStep}</p>
 
         <form onSubmit={this.handleSubmit}>

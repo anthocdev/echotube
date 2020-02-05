@@ -4,7 +4,9 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <div>Home Page Will be Here</div>
+        <h1 style={{ paddingTop: "20px" }}>
+          Nothing to see here... Yet. Check Users.
+        </h1>
       </div>
     );
   }
