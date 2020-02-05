@@ -23,11 +23,15 @@ class PlaylistVideosPage extends React.Component {
     return (
       <div>
         <h1> Videos </h1>
-        <button onClick={() => this.addVideos()}>Add Videos to Queue</button>
-        <Videos
-          videos={this.props.playlistVideosData}
-          dispatch={this.props.dispatch}
-        />
+        <button className="btn btn-warning" onClick={() => this.addVideos()}>
+          Add All Videos to Queue
+        </button>
+        <div>
+          <Videos
+            videos={this.props.playlistVideosData}
+            dispatch={this.props.dispatch}
+          />
+        </div>
         <AddVideoForm pageId={this.props.match.params._id} />
       </div>
     );

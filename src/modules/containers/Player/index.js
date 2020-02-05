@@ -71,7 +71,7 @@ class Player extends React.PureComponent {
     return (
       <div>
         <button
-          className="PlayerButton"
+          className="btn btn-dark PlayerButton"
           onClick={() => this.props.dispatch(togglePlayer(playerVisible))}
         >
           {/*Change playerVisible property*/}
