@@ -6,6 +6,7 @@ import userReducer from "./users";
 import userPlaylistVideosReducer from "./userPlaylistVideos";
 import userPlaylistReducer from "./userPlaylists";
 import playerReducer from "./player";
+import authReducer from "./auth";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
@@ -15,7 +16,8 @@ const allReducers = combineReducers({
   video: GetVideosReducer,
   postUserVideo: PostUserVideosReducer,
   user: userReducer,
-  player: playerReducer
+  player: playerReducer,
+  auth: authReducer
 });
 
 export default allReducers;

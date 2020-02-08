@@ -1,13 +1,18 @@
 var express = require("express");
 const db = require("./database");
+const UsersController = require("./controllers/users");
 
 var router = express.Router();
-
-/* GET ROUTES */
 
 router.get("/test/", async (req, res, next) => {
   res.json("Welcome to EchoTube API, this is a test json return function.");
 });
+
+/* Auth Routes Start*/
+router.route("/signup").post(UsersController.signUp);
+router.route("/signin").post(UsersController.signIn);
+router.route("/secret").post(UsersController.secret);
+/* Auth Routes End*/
 
 //Get list of users
 router.get("/users/", async (req, res, next) => {
@@ -73,8 +78,6 @@ router.get("/Video/:id", async (req, res, next) => {
     res.sendStatus(500);
   }
 });*/
-
-/* POST ROUTES */
 
 router.post("/Playlist/:id", async (req, res, next) => {
   try {
