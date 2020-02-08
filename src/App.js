@@ -14,13 +14,22 @@ class App extends React.Component {
     return (
       <div className="Main">
         <div>
+          {/* Video Player page takes highest z-index over other modules to allow overlay */}
           <Player />
+          {/* Header Section above routes*/}
           <Header />
         </div>
+        {/* Home Page Route*/}
         <Route exact path="/" component={Home} />
+        {/* User List Route (Experimental)*/}
         <Route exact path="/users" component={UserPage} />
+        {/* List of Playlists made by User Route*/}
         <Route path="/user/:_id" component={UserPlaylistsPage} />
+        {/* Playlist Video Listing Route */}
         <Route path="/Playlist/:_id" component={PlaylistVideosPage} />
+        {/* Account Management Route */}
+        {/* User Log-In Route */}
+        {/* User Register Route */}
       </div>
     );
   }
