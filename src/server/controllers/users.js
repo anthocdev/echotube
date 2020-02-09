@@ -29,9 +29,9 @@ module.exports = {
   },
 
   googleOAuth: async (req, res, next) => {
-    // Generate Token containing google ID for verification
-    console.log("req.user", req.user.dataValues.googleID);
-    const token = signToken(req.user.dataValues.googleID);
+    // Generate Token containing google ID for verification against existing accounts
+    console.log("req.user", req.user.dataValues);
+    const token = signToken(req.user.dataValues);
     res.status(200).json({ token });
   }
 };

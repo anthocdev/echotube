@@ -3,21 +3,18 @@ const seqlInstance = require("../../database/connection");
 
 /* Playlist Table schema */
 module.exports = seqlInstance.define(
-  "Playlist",
+  "playlistvideo",
   {
-    PlaylistID: {
+    PlaylistVideoID: {
       type: Sequalize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    Name: {
-      type: Sequalize.STRING(45)
-    },
-    users_UserID: {
+    playlists_PlaylistID: {
       type: Sequalize.INTEGER
     },
-    PlaylistImageLink: {
-      type: Sequalize.STRING(300)
+    videos_VideoID: {
+      type: Sequalize.INTEGER
     }
   },
   {

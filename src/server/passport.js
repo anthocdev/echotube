@@ -16,9 +16,8 @@ passport.use(
       try {
         // Find the user specified in token
         console.log(payload.sub);
-        // const user = await User.findOne(payload.sub);
         const user = await UserModel.findOne({
-          where: { googleID: payload.sub }
+          where: { googleID: payload.sub.googleID }
         });
 
         // If user doesn't exists, handle it
@@ -66,24 +65,9 @@ passport.use(
       } catch (error) {
         done(error, false, error.message);
       }
-
-      // UserModel.findOrCreate({
-      //   where: { googleID: profile.id },
-      //   defaults: {
-      //     googleID: profile.id,
-      //     Nickname: profile.displayName,
-      //     UserImageLink: profile._json.picture
-      //   }
-      // }).then((users, created) => {
-      //   return done(null, { user: users[0].get(), profile });
-      // });
       console.log("accessToken", accessToken);
       console.log("refreshToken", refreshToken);
       console.log("profile", profile);
-
-      //Check if user exists in DB
-
-      //If new account
     }
   )
 );

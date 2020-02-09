@@ -1,6 +1,9 @@
 var express = require("express");
 const db = require("./database");
+
 const UsersController = require("./controllers/users");
+const PlaylistController = require("./controllers/playlist");
+const VideoController = require("./controllers/videos");
 const passport = require("passport");
 const passportConf = require("./passport");
 const PassportGoogle = passport.authenticate("googleToken", { session: false });
@@ -20,6 +23,20 @@ router.route("/secret").post(passportJWT, UsersController.secret);
 /* Google OAuth through Passport using access tokens */
 router.route("/oauth/google").post(PassportGoogle, UsersController.googleOAuth);
 /* Auth Routes End*/
+
+/* Playlist Routes */
+router.route("/playlist").get(PlaylistController.getPlaylists);
+router.route("/playlist").post(passportJWT, PlaylistController.addPlaylist);
+router
+  .route("/playlist")
+  .delete(passportJWT, PlaylistController.removePlaylist);
+/* Playlist Routes End */
+
+/* Video Routes */
+router.route("/video").post(passportJWT, VideoController.addVideo);
+router.route("/video").delete(passportJWT, VideoController.removeVideo);
+router.route("/video").get(VideoController.getVideos);
+/* Video Routes End*/
 
 //USER LIST USING SERIALIZE
 router.get("/st/", async (req, res, next) => {

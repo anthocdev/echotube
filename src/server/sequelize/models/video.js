@@ -3,7 +3,7 @@ const seqlInstance = require("../../database/connection");
 
 /* Video Table schema */
 module.exports = seqlInstance.define(
-  "Video",
+  "Videos",
   {
     VideoID: {
       type: Sequalize.INTEGER,
@@ -23,10 +23,12 @@ module.exports = seqlInstance.define(
       type: Sequalize.STRING(45)
     },
     VideoLink: {
-      type: Sequalize.STRING(100)
+      type: Sequalize.STRING(100),
+      unique: true
     }
   },
   {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
   }
 );

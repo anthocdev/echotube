@@ -17,7 +17,8 @@ module.exports = seqlInstance.define(
       type: Sequalize.STRING(300)
     },
     googleID: {
-      type: Sequalize.STRING(45)
+      type: Sequalize.STRING(45),
+      unique: true
     }
   },
   {
