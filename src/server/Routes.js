@@ -1,6 +1,8 @@
 var express = require("express");
 const db = require("./database");
 const UsersController = require("./controllers/users");
+const passport = require("passport");
+const passportConf = require("./passport");
 
 var router = express.Router();
 
@@ -12,6 +14,9 @@ router.get("/test/", async (req, res, next) => {
 router.route("/signup").post(UsersController.signUp);
 router.route("/signin").post(UsersController.signIn);
 router.route("/secret").post(UsersController.secret);
+router
+  .route("/oauth/google")
+  .post(passport.authenticate("googleToken", { session: false }));
 /* Auth Routes End*/
 
 //Get list of users
