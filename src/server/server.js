@@ -6,6 +6,13 @@ const app = express();
 const port = 3001;
 //General set-up for express server
 
+//DB Connection
+require("./database/connection");
+
+//Testing
+
+// User.create({ Nickname: "TestName" });
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); //CORS Allowed Domain
   res.header(

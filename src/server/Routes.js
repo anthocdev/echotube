@@ -3,6 +3,9 @@ const db = require("./database");
 const UsersController = require("./controllers/users");
 const passport = require("passport");
 const passportConf = require("./passport");
+const PassportGoogle = passport.authenticate("googleToken", { session: false });
+const passportJWT = passport.authenticate("jwt", { session: false });
+const UserModel = require("./sequelize/models/user");
 
 var router = express.Router();
 
@@ -13,11 +16,20 @@ router.get("/test/", async (req, res, next) => {
 /* Auth Routes Start*/
 router.route("/signup").post(UsersController.signUp);
 router.route("/signin").post(UsersController.signIn);
-router.route("/secret").post(UsersController.secret);
-router
-  .route("/oauth/google")
-  .post(passport.authenticate("googleToken", { session: false }));
+router.route("/secret").post(passportJWT, UsersController.secret);
+/* Google OAuth through Passport using access tokens */
+router.route("/oauth/google").post(PassportGoogle, UsersController.googleOAuth);
 /* Auth Routes End*/
+
+//USER LIST USING SERIALIZE
+router.get("/st/", async (req, res, next) => {
+  UserModel.findAll()
+    .then(users => {
+      console.log(users);
+      res.sendStatus(200);
+    })
+    .catch(err => console.log(err));
+});
 
 //Get list of users
 router.get("/users/", async (req, res, next) => {
