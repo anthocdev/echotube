@@ -8,40 +8,42 @@ import { GoogleLogout } from "react-google-login";
 
 import * as actions from "../actions";
 
-function Auth() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [url, setUrl] = useState("");
-
-  const responseGoogle = response => {
-    setName(response.profileObj);
-    setEmail(response.profileObj.email);
-    setUrl(response.profileObj.imageUrl);
-    console.log(response);
-  };
-
-  function LogoutSuccess() {
-    console.log("Successfully Logged Out");
+class Auth extends React.Component {
+  constructor(props) {
+    super(props);
+    this.responseGoogle = this.responseGoogle.bind(this);
+  }
+  async responseGoogle(response) {
+    console.log("Google Response", response);
+    await this.props.googleOauth(response.accessToken);
+    if (!this.props.errorMessage) {
+      this.props.history.push("/");
+    }
   }
 
-  return (
-    <div>
-      <img src={url} />
-      {/* Google Authentication Button using basic method */}
-      <GoogleLogin
-        clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={"single_host_origin"}
-      />
-      <GoogleLogout
-        clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
-        buttonText="Logout"
-        onLogoutSuccess={LogoutSuccess}
-      />
-    </div>
-  );
+  render() {
+    function LogoutSuccess() {
+      console.log("Successfully Logged Out");
+    }
+
+    return (
+      <div>
+        {/* Google Authentication Button using basic method */}
+        <GoogleLogin
+          clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={this.responseGoogle}
+          onFailure={this.responseGoogle}
+          cookiePolicy={"single_host_origin"}
+        />
+        <GoogleLogout
+          clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
+          buttonText="Logout"
+          onLogoutSuccess={LogoutSuccess}
+        />
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = store => {

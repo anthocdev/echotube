@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
+import * as actions from "../actions";
 import {
   Navbar,
   Button,
@@ -39,6 +40,7 @@ class Header extends React.Component {
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
+        <a>{this.props.isAuth ? "omegalul" : "hehexd"}</a>
       </Navbar>
     );
   } //Using bootstrap navbar for basic UI example
@@ -46,17 +48,8 @@ class Header extends React.Component {
 
 const mapStateToProps = store => {
   return {
-    userData: store.user.userData,
-    isLogged: store.user.loggedIn
+    isAuth: store.auth.isAuth
   };
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch: function(task) {
-      dispatch(task);
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, actions)(Header);
