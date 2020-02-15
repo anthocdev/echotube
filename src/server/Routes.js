@@ -1,12 +1,54 @@
 var express = require("express");
 const db = require("./database");
 
-var router = express.Router();
+const UsersController = require("./controllers/users");
+const PlaylistController = require("./controllers/playlist");
+const VideoController = require("./controllers/videos");
+const passport = require("passport");
+const passportConf = require("./passport");
+const PassportGoogle = passport.authenticate("googleToken", { session: false });
+const passportJWT = passport.authenticate("jwt", { session: false });
+const UserModel = require("./sequelize/models/user");
 
-/* GET ROUTES */
+var router = express.Router();
 
 router.get("/test/", async (req, res, next) => {
   res.json("Welcome to EchoTube API, this is a test json return function.");
+});
+
+/* Auth Routes Start*/
+router.route("/signup").post(UsersController.signUp);
+router.route("/signin").post(UsersController.signIn);
+router.route("/secret").post(passportJWT, UsersController.secret);
+/* Google OAuth through Passport using access tokens */
+router.route("/oauth/google").post(PassportGoogle, UsersController.googleOAuth);
+/* Auth Routes End*/
+
+/* User Routes */
+router.route("/userInfo").get(passportJWT, UsersController.userInfo);
+
+/* Playlist Routes */
+router.route("/playlist").get(passportJWT, PlaylistController.getPlaylists);
+router.route("/playlist").post(passportJWT, PlaylistController.addPlaylist);
+router
+  .route("/playlist")
+  .delete(passportJWT, PlaylistController.removePlaylist);
+/* Playlist Routes End */
+
+/* Video Routes */
+router.route("/video").post(passportJWT, VideoController.addVideo);
+router.route("/video").delete(passportJWT, VideoController.removeVideo);
+router.route("/video").get(VideoController.getVideos);
+/* Video Routes End*/
+
+//USER LIST USING SERIALIZE
+router.get("/st/", async (req, res, next) => {
+  UserModel.findAll()
+    .then(users => {
+      console.log(users);
+      res.sendStatus(200);
+    })
+    .catch(err => console.log(err));
 });
 
 //Get list of users
@@ -73,8 +115,6 @@ router.get("/Video/:id", async (req, res, next) => {
     res.sendStatus(500);
   }
 });*/
-
-/* POST ROUTES */
 
 router.post("/Playlist/:id", async (req, res, next) => {
   try {
