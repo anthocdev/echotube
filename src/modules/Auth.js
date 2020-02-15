@@ -19,7 +19,6 @@ class Auth extends React.Component {
     await this.props.googleOauth(response.accessToken);
     if (!this.props.errorMessage) {
       await this.props.getProfileInfo();
-      this.props.history.push("/");
     }
   }
 

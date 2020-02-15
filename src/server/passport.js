@@ -15,17 +15,19 @@ passport.use(
     async (payload, done) => {
       try {
         // Find the user specified in token
-        console.log(payload.sub);
+        console.log("payloadtest", payload.sub);
         const user = await UserModel.findOne({
           where: { googleID: payload.sub.googleID }
         });
 
         // If user doesn't exists, handle it
         if (!user) {
+          console.log("no user");
           return done(null, false);
         }
 
         // Otherwise, return the user
+        console.log("return user");
         done(null, user);
       } catch (error) {
         done(error, false);
@@ -58,13 +60,15 @@ passport.use(
         }
 
         console.log("User does not exist in DB, creating a new one");
-        //Create New User
-        const newUser = UserModel.create({
+        //Create New User since google ID doesn't exist
+        const newUser = await UserModel.create({
           googleID: profile.id,
           Nickname: profile.displayName,
           UserImageLink: profile._json.picture
         });
-        done(null, newUser);
+
+        console.log("newuser", newUser);
+        return done(null, newUser);
       } catch (error) {
         done(error, false, error.message);
       }

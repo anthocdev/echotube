@@ -14,14 +14,14 @@ export default (state = DEFAULT_STATE, action) => {
     case GOOGLE_OAUTH_LOGIN:
       return {
         ...state,
-        token: action.payload,
+        jwtToken: action.payload,
         isAuth: true,
         errorMessage: ""
       };
     case GOOGLE_OAUTH_SIGNOUT:
       return {
         ...state,
-        token: action.payload,
+        jwtToken: action.payload,
         isAuth: false,
         errorMessage: ""
       };

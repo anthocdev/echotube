@@ -11,7 +11,7 @@ class UserPlaylistsPage extends React.Component {
 
   render() {
     if (!this.props.userPlaylist.Playlists.length) {
-      return <div>XDD</div>;
+      return <div>--No Playlists--</div>;
     }
     return (
       <div>
