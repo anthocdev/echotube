@@ -16,11 +16,13 @@ module.exports = {
   removePlaylist: async (req, res, next) => {
     console.log("Remove playlist method called");
   },
+  //Returns playlists of JWT_Token owner
   getPlaylists: async (req, res, next) => {
     console.log("Get playlists method called");
     console.log(req.body);
     UserModel.findOne({
-      where: { googleID: "110972891602083952811" },
+      where: { googleID: req.user.googleID },
+      attributes: ["Nickname"],
       include: [PlaylistModel]
     }).then(value => {
       if (value) {

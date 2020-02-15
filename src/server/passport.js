@@ -51,6 +51,9 @@ passport.use(
         //Check if user exists
         if (existingUser) {
           console.log("User already present in DB");
+          console.log("accessToken", accessToken);
+          console.log("refreshToken", refreshToken);
+          console.log("profile", profile);
           return done(null, existingUser);
         }
 
@@ -65,9 +68,6 @@ passport.use(
       } catch (error) {
         done(error, false, error.message);
       }
-      console.log("accessToken", accessToken);
-      console.log("refreshToken", refreshToken);
-      console.log("profile", profile);
     }
   )
 );

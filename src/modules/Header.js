@@ -36,7 +36,13 @@ class Header extends React.Component {
               style={{ paddingRight: "10px", cursor: "pointer" }}
               to="/users"
             >
-              <NavItem>Users</NavItem>
+              <NavItem>Profile</NavItem>
+            </LinkContainer>
+            <LinkContainer
+              style={{ paddingRight: "10px", cursor: "pointer" }}
+              to="/auth"
+            >
+              <NavItem>Auth</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

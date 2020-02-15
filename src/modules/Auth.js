@@ -12,20 +12,23 @@ class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.responseGoogle = this.responseGoogle.bind(this);
+    this.LogoutSuccess = this.LogoutSuccess.bind(this);
   }
   async responseGoogle(response) {
     console.log("Google Response", response);
     await this.props.googleOauth(response.accessToken);
     if (!this.props.errorMessage) {
+      await this.props.getProfileInfo();
       this.props.history.push("/");
     }
   }
 
-  render() {
-    function LogoutSuccess() {
-      console.log("Successfully Logged Out");
-    }
+  async LogoutSuccess() {
+    console.log("Successfully Logged Out");
+    this.props.signOut();
+  }
 
+  render() {
     return (
       <div>
         {/* Google Authentication Button using basic method */}
@@ -39,7 +42,7 @@ class Auth extends React.Component {
         <GoogleLogout
           clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
           buttonText="Logout"
-          onLogoutSuccess={LogoutSuccess}
+          onLogoutSuccess={this.LogoutSuccess}
         />
       </div>
     );
@@ -51,13 +54,5 @@ const mapStateToProps = store => {
     userData: store.user.userData
   };
 };
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch: function(task) {
-      dispatch(task);
-    }
-  };
-}
 
 export default compose(connect(null, actions))(Auth);

@@ -33,5 +33,11 @@ module.exports = {
     console.log("req.user", req.user.dataValues);
     const token = signToken(req.user.dataValues);
     res.status(200).json({ token });
+  },
+
+  userInfo: async (req, res, next) => {
+    //Get User Details
+    const userData = req.user;
+    res.status(200).json({ userData });
   }
 };

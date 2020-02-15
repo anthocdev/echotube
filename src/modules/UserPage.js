@@ -1,23 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
-import UserList from "./containers/User/UserList";
-import { fetchUsers } from "../actions/UserActions";
+import * as actions from "../actions";
+import UserPlaylistPage from "./UserPlaylistsPage";
 /* Page for displaying users stored in the server */
 class UserPage extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchUsers());
+    this.props.getProfileInfo();
   }
 
   render() {
     const Loaded = (
       <div>
-        <h1> List of Users</h1>
-        <UserList users={this.props.userData} />
+        <h1> Profile Page</h1>
+        <h1> {this.props.userData.Nickname}</h1>
+        <img src={this.props.userData.ProfileImage} />
+        <UserPlaylistPage />
       </div>
     );
     const Loading = (
       <div>
-        <h1> Loading Users...</h1>
+        <h1> Loading Profile...</h1>
       </div>
     );
 
@@ -31,17 +33,8 @@ class UserPage extends React.Component {
 
 const mapStateToProps = store => {
   return {
-    userData: store.user.userData,
-    isFetching: store.user.fetching
+    userData: store.user
   };
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch: function(task) {
-      dispatch(task);
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default connect(mapStateToProps, actions)(UserPage);

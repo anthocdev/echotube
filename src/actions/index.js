@@ -2,17 +2,10 @@ import axios from "axios";
 import {
   GOOGLE_OAUTH_LOGIN,
   GOOGLE_OAUTH_ERROR,
-  GOOGLE_OAUTH_SIGNOUT
+  GOOGLE_OAUTH_SIGNOUT,
+  GET_PROFILE_INFO_SUCCESS,
+  GET_PROFILE_INFO_ERROR
 } from "./types";
-
-export const signup = data => {
-  return async dispatch => {
-    // HTTP Request to back-end
-    // Back end response
-    // Dispatch
-    // Store into localStorage
-  };
-};
 
 //Google OAuth authentication using access_token, sent to our API
 export const googleOauth = data => {
@@ -42,10 +35,31 @@ export const googleOauth = data => {
 export const signOut = () => {
   return dispatch => {
     localStorage.removeItem("JWT_TOKEN");
+    console.log("itworked");
     axios.defaults.headers.common["Authorization"] = "";
     dispatch({
       type: GOOGLE_OAUTH_SIGNOUT,
       payload: ""
     });
+  };
+};
+
+export const getProfileInfo = data => {
+  return async dispatch => {
+    try {
+      const res = await axios.get("http://localhost:3001/api/userInfo");
+
+      dispatch({
+        type: GET_PROFILE_INFO_SUCCESS,
+        payload: res.data.userData
+      });
+
+      console.log("res", res);
+    } catch (err) {
+      dispatch({
+        type: GET_PROFILE_INFO_ERROR,
+        payload: "Invalid JWT Token"
+      });
+    }
   };
 };

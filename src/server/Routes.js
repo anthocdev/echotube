@@ -24,8 +24,11 @@ router.route("/secret").post(passportJWT, UsersController.secret);
 router.route("/oauth/google").post(PassportGoogle, UsersController.googleOAuth);
 /* Auth Routes End*/
 
+/* User Routes */
+router.route("/userInfo").get(passportJWT, UsersController.userInfo);
+
 /* Playlist Routes */
-router.route("/playlist").get(PlaylistController.getPlaylists);
+router.route("/playlist").get(passportJWT, PlaylistController.getPlaylists);
 router.route("/playlist").post(passportJWT, PlaylistController.addPlaylist);
 router
   .route("/playlist")

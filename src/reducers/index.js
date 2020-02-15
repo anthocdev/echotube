@@ -1,16 +1,15 @@
 import loggedReducer from "./isLogged";
 import GetVideosReducer from "./GetVideos";
 import PostUserVideosReducer from "./PostUserVideos";
-import playlistReducer from "./playlist";
-import userReducer from "./users";
+import userPlaylistReducer from "./playlist";
 import userPlaylistVideosReducer from "./userPlaylistVideos";
-import userPlaylistReducer from "./userPlaylists";
+// import userPlaylistReducer from "./userPlaylists";
 import playerReducer from "./player";
 import authReducer from "./auth";
+import userReducer from "./parseUser";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
-  playlist: playlistReducer,
   userPlaylist: userPlaylistReducer,
   userPlaylistVideos: userPlaylistVideosReducer,
   video: GetVideosReducer,
@@ -20,4 +19,13 @@ const allReducers = combineReducers({
   auth: authReducer
 });
 
-export default allReducers;
+//Root reducer override for resetting all states(clearing cached data) after logout
+const rootReducer = (state, action) => {
+  if (action.type == "GOOGLE_OAUTH_SIGNOUT") {
+    state = undefined;
+  }
+
+  return allReducers(state, action);
+};
+
+export default rootReducer;
