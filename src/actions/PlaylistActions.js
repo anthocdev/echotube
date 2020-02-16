@@ -10,7 +10,7 @@ import {
   EDIT_USER_PLAYLIST_ERROR
 } from "./types";
 
-export const getPlaylistVideos = () => {
+export const getUserPlaylists = () => {
   return async dispatch => {
     try {
       const res = await axios.get("http://localhost:3001/api/playlist");

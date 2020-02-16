@@ -1,7 +1,6 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { updatePlaybackQueue } from "../../../actions/playback";
 
 /* Video card display function for video objects */
 export default function VideoCard({ video, dispatch }) {
@@ -30,7 +29,7 @@ export default function VideoCard({ video, dispatch }) {
         <button
           className="btn btn-dark"
           style={{ margin: "4px" }}
-          onClick={() => dispatch(updatePlaybackQueue(video))}
+          onClick={() => dispatch(video)}
         >
           Add Video to Queue
         </button>

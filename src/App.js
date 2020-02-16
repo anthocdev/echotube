@@ -5,7 +5,7 @@ import UserPage from "./modules/UserPage";
 import UserPlaylistsPage from "./modules/UserPlaylistsPage";
 import PlaylistVideosPage from "./modules/PlaylistVideosPage";
 import Header from "./modules/Header";
-import Auth from "./modules/Auth"
+import Auth from "./modules/Auth";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./style/player.css";
 import Player from "./modules/containers/Player";
@@ -29,8 +29,7 @@ class App extends React.Component {
         {/* Playlist Video Listing Route */}
         <Route path="/Playlist/:_id" component={PlaylistVideosPage} />
         {/* Account Management Route */}
-        <Route path="/Auth" component={Auth}/>
-        {/* User Auth Route */}
+        <Route path="/Auth" component={Auth} />
       </div>
     );
   }

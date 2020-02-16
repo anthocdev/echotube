@@ -1,7 +1,9 @@
 import loggedReducer from "./isLogged";
 import GetVideosReducer from "./GetVideos";
 import PostUserVideosReducer from "./PostUserVideos";
-import userPlaylistReducer from "./playlist";
+import userPlaylistReducer from "./UserPlaylistReducer";
+import PlaylistVaideoReducer from "./PlaylistVideoReducer";
+import PlayerReducer from "./PlayerReducer";
 import userPlaylistVideosReducer from "./userPlaylistVideos";
 // import userPlaylistReducer from "./userPlaylists";
 import playerReducer from "./player";
@@ -11,11 +13,11 @@ import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
   userPlaylist: userPlaylistReducer,
-  userPlaylistVideos: userPlaylistVideosReducer,
+  userPlaylistVideos: PlaylistVaideoReducer,
   video: GetVideosReducer,
   postUserVideo: PostUserVideosReducer,
   user: userReducer,
-  player: playerReducer,
+  player: PlayerReducer,
   auth: authReducer
 });
 

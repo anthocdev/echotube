@@ -18,7 +18,7 @@ const player = (
     }
     //Set player visible/invisible
     case "TOGGLE_PLAYER": {
-      return { ...state, isVisible: action.payload };
+      return { ...state, isVisible: ![...state.isVisible] };
     }
     //Set player volume
     case "SET_VOLUME": {

@@ -1,9 +1,10 @@
 import React from "react";
 import VideoItem from "./VideoItem";
 import CardColumns from "react-bootstrap/Card";
+import * as PlayerActions from "../../../actions/PlayerActions";
 import YoutubePlayer from "./YoutubePlayer";
-import { togglePlayer, setPlayingIndex } from "../../../actions/playback";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 /* Player overlay with YouTube iframe and custom video listing column */
 
@@ -17,8 +18,12 @@ class Player extends React.PureComponent {
     playIndex: null
   };
 
+  removeFromQueue = index => {
+    this.props.RemovePlaybackItem(index);
+  };
+
   selectVideo = (index, videoLink) => {
-    this.props.dispatch(setPlayingIndex(index));
+    this.props.SetActiveItem(index);
 
     this.setState({
       currentlyPlaying: videoLink,
@@ -26,15 +31,19 @@ class Player extends React.PureComponent {
     });
   };
 
-  togglePlayer() {
-    this.setState({ showPlayer: !this.state.showPlayer });
-  } //Toggling player visibility state
+  UpdatePlayback = () => {
+    if (this.props.PlaybackQueue[this.props.CurrentIndex] != undefined) {
+      return this.props.PlaybackQueue[this.props.CurrentIndex].VideoLink;
+    } else {
+      return null;
+    }
+  };
 
   render() {
-    const playerVisible = this.props.player.isVisible;
+    const playerVisible = this.props.player.IsActive;
     const mapVideos = (
       <div>
-        {this.props.player.playbackItems.map((data, i) => (
+        {this.props.player.PlaybackQueue.map((data, i) => (
           <CardColumns className="videoColumns">
             <VideoItem
               video={data}
@@ -42,6 +51,7 @@ class Player extends React.PureComponent {
               index={i}
               selectedVideo={this.selectVideo}
             />
+            <Button onClick={() => this.removeFromQueue(i)}>Remove</Button>
           </CardColumns>
         ))}
       </div>
@@ -51,14 +61,11 @@ class Player extends React.PureComponent {
       <div className="playerMain">
         {" "}
         <div className="left-container">
-          <YoutubePlayer
-            videoId={this.state.currentlyPlaying}
-            selectedVideo={this.selectVideo}
-          />
+          <YoutubePlayer videoId={this.UpdatePlayback()} />
         </div>
         <div className="right-container">
           <div className="playlistColumn">
-            {this.props.player.playbackItems.length > 0 ? (
+            {this.props.player.PlaybackQueue.length > 0 ? (
               mapVideos
             ) : (
               <div>No videos available</div>
@@ -72,7 +79,7 @@ class Player extends React.PureComponent {
       <div>
         <button
           className="btn btn-dark PlayerButton"
-          onClick={() => this.props.dispatch(togglePlayer(playerVisible))}
+          onClick={() => this.props.TogglePlayer()}
         >
           {/*Change playerVisible property*/}
           Toggle Player
@@ -86,18 +93,12 @@ class Player extends React.PureComponent {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(store, props) {
   return {
-    player: state.player
+    player: store.player,
+    PlaybackQueue: store.player.PlaybackQueue,
+    CurrentIndex: store.player.CurrentIndex
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch: function(task) {
-      dispatch(task);
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Player);
+export default connect(mapStateToProps, PlayerActions)(Player);

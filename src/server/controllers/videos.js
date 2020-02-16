@@ -18,10 +18,11 @@ module.exports = {
   removeVideo: async (req, res, next) => {
     console.log("Remove video method called");
   },
+  //Need to implement additional security measures for private playlists (Match User GoogleID with playlist owner prior to responding)
   getVideos: async (req, res, next) => {
     console.log("Get videos method called");
     PlaylistModel.findOne({
-      where: { PlaylistID: 1 },
+      where: { PlaylistID: req.param("PlaylistID") },
       include: [VideoModel]
     }).then(value => {
       if (value) {

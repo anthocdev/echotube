@@ -1,7 +1,8 @@
 import React from "react";
 import Videos from "./containers/Videos";
+import { getPlaylistVideos } from "../actions/VideoActions";
+import { AddPlaybackItem } from "../actions/PlayerActions";
 import { connect } from "react-redux";
-import { getPlaylistVideos } from "../actions/EchoApiActions";
 import AddVideoForm from "./containers/Forms/AddVideoForm";
 import { updatePlaybackQueue } from "../actions/playback";
 
@@ -9,17 +10,22 @@ import { updatePlaybackQueue } from "../actions/playback";
 class PlaylistVideosPage extends React.Component {
   componentDidMount() {
     const { params } = this.props.match;
-    this.props.dispatch(getPlaylistVideos(params._id)); //Fetch user playlists by their id
+    //Pull Videos from specified playlist ID
+    this.props.getPlaylistVideos(params._id);
   }
 
   addVideos() {
     {
       this.props.playlistVideosData.map((item, index) =>
-        this.props.dispatch(updatePlaybackQueue(item))
+        this.props.AddPlaybackItem(item)
       );
     }
   }
   render() {
+    if (!this.props.playlistVideosData.length) {
+      return <div>--No Videos--</div>;
+    }
+
     return (
       <div>
         <h1> Videos </h1>
@@ -29,7 +35,7 @@ class PlaylistVideosPage extends React.Component {
         <div>
           <Videos
             videos={this.props.playlistVideosData}
-            dispatch={this.props.dispatch}
+            dispatch={this.props.AddPlaybackItem}
           />
         </div>
         <AddVideoForm pageId={this.props.match.params._id} />
@@ -41,18 +47,12 @@ class PlaylistVideosPage extends React.Component {
 function mapStateToProps(state, props) {
   if (props.match.params._id) {
     return {
-      playlistVideosData: state.userPlaylistVideos.playlistVideoData,
+      playlistVideosData: state.userPlaylistVideos.Videos,
       player: state.player
     };
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch: function(task) {
-      dispatch(task);
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlaylistVideosPage);
+export default connect(mapStateToProps, { getPlaylistVideos, AddPlaybackItem })(
+  PlaylistVideosPage
+);

@@ -1,18 +1,31 @@
 import React from "react";
 import Youtube from "react-youtube";
 import { connect } from "react-redux";
+import * as PlayerActions from "../../../actions/PlayerActions";
 import { setPlayingIndex } from "../../../actions/playback";
+import Player from ".";
+import { Last } from "react-bootstrap/PageItem";
 
 /* YouTube video player instance*/
 class YoutubePlayer extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log("p[roasrsaarsarsp", this.props);
     this.state = {
       index: 0
     };
   }
 
+  onReady = event => {
+    event.target.playVideo();
+    console.log(this.props.IsActive);
+  };
+
+  onEnd = event => {
+    this.props.SetActiveItem(this.props.CurrentIndex + 1);
+    event.target.playVideo();
+    console.log(this.props.PlaybackQueue);
+  };
   componentDidMount() {}
 
   render() {
@@ -35,29 +48,16 @@ class YoutubePlayer extends React.Component {
       </div>
     );
   }
-
-  onReady(event) {
-    event.target.playVideo();
-  }
-
-  onEnd(event) {
-    //To be implemented -> Play next video
-  }
 }
 
 function mapStateToProps(state, props) {
   return {
-    playbackItems: state.player.playbackItems,
-    currentIndex: state.player.currentIndex
+    IsActive: state.player.IsActive,
+    PlaybackQueue: state.player.PlaybackQueue,
+    CurrentIndex: state.player.CurrentIndex,
+    CurrentTime: state.player.CurrentTime,
+    Volume: state.player.Volume
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch: function(task) {
-      dispatch(task);
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(YoutubePlayer);
+export default connect(mapStateToProps, PlayerActions)(YoutubePlayer);

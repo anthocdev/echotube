@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import * as PlaylistActions from "../actions/PlaylistActions";
 import Playlists from "./containers/UserPlaylists";
 
-/* Page for displaying playlists of chosen user */
+/* Page for displaying playlists of signed in user */
 class UserPlaylistsPage extends React.Component {
   componentDidMount() {
-    this.props.getPlaylistVideos();
+    this.props.getUserPlaylists();
   }
 
   render() {
