@@ -6,10 +6,12 @@ import PlaylistVaideoReducer from "./PlaylistVideoReducer";
 import PlayerReducer from "./PlayerReducer";
 import userPlaylistVideosReducer from "./userPlaylistVideos";
 // import userPlaylistReducer from "./userPlaylists";
+import YouTubeReducer from "./YouTubeReducer";
 import playerReducer from "./player";
 import authReducer from "./auth";
 import userReducer from "./parseUser";
 import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 
 const allReducers = combineReducers({
   userPlaylist: userPlaylistReducer,
@@ -18,7 +20,9 @@ const allReducers = combineReducers({
   postUserVideo: PostUserVideosReducer,
   user: userReducer,
   player: PlayerReducer,
-  auth: authReducer
+  auth: authReducer,
+  youtube: YouTubeReducer,
+  form: formReducer
 });
 
 //Root reducer override for resetting all states(clearing cached data) after logout

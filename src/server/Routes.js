@@ -4,6 +4,8 @@ const db = require("./database");
 const UsersController = require("./controllers/users");
 const PlaylistController = require("./controllers/playlist");
 const VideoController = require("./controllers/videos");
+const YouTubeController = require("./controllers/youtube");
+const DeezerController = require("./controllers/deezer");
 const passport = require("passport");
 const passportConf = require("./passport");
 const PassportGoogle = passport.authenticate("googleToken", { session: false });
@@ -40,6 +42,16 @@ router.route("/video").post(passportJWT, VideoController.addVideo);
 router.route("/video").delete(passportJWT, VideoController.removeVideo);
 router.route("/video").get(VideoController.getVideos);
 /* Video Routes End*/
+
+/* YouTube API Call Routes */
+router.route("/getVideo").get(passportJWT, YouTubeController.getVideo);
+/* YouTube API Call Routes End */
+
+/* Deezer API Call Routes */
+/* Query does not require JWT confirmation since API Key is not needed */
+router.route("/deezerQuery").get(DeezerController.searchQuery);
+
+/* Deezer API Call Routes End */
 
 //USER LIST USING SERIALIZE
 router.get("/st/", async (req, res, next) => {

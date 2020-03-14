@@ -14,9 +14,20 @@ PlaylistModel.belongsToMany(VideoModel, {
 module.exports = {
   addVideo: async (req, res, next) => {
     console.log("Add video method called.");
+    console.log(req.body.params);
+
+    /* REQ.BODY.PARAMS contains all data */
+    /* Check if Video Already exists in DB*/
+
+    /* If not create new record in video table*/
+
+    /* Update Playlist Association PlaylistID : PlaylistVideoID : VideoID */
   },
   removeVideo: async (req, res, next) => {
     console.log("Remove video method called");
+    /* Match Playlist ID : VideoID Values */
+
+    /* Drop Record from the association table */
   },
   //Need to implement additional security measures for private playlists (Match User GoogleID with playlist owner prior to responding)
   getVideos: async (req, res, next) => {

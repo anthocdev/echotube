@@ -1,3 +1,4 @@
+/* For testing purposes only, will be removed in the future. */
 import axios from "axios";
 const API_KEY = `AIzaSyB2yKogm2aT-hE-wd-AYqUXezzXcHCCKXs`; //@todo: User specific API keys
 const MAX_RESULTS = 50;

@@ -18,7 +18,7 @@ export default createStore(
   {
     //Initializing auth state if JWT token is available
     auth: {
-      token: jwttoken,
+      jwtToken: jwttoken,
       isAuth: jwttoken ? true : false
     }
   },
