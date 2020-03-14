@@ -15,10 +15,47 @@ module.exports = {
   addVideo: async (req, res, next) => {
     console.log("Add video method called.");
     console.log(req.body.params);
+    const { PlaylistID, data } = req.body.params;
 
+    console.log("PlaylistID", PlaylistID);
+    console.log("Video ID", data.id);
     /* REQ.BODY.PARAMS contains all data */
     /* Check if Video Already exists in DB*/
-
+    try {
+      VideoModel.findOne({
+        where: { VideoLink: data.id }
+      }).then(video => {
+        if (video) {
+          console.log("EXISTS");
+        } else {
+          //If Video is new
+          console.log("Does not exist");
+          //Execute as a single promise (ensure that video is not only stored into DB, but also linked to relevant playlist afterwards)
+          Promise.all(
+            VideoModel.create({
+              Name: data.snippet.title,
+              Description: data.snippet.description,
+              ChannelName: data.snippet.channelTitle,
+              ChannelID: data.snippet.channelId,
+              VideoLink: data.id
+            }).then(video =>
+              PlaylistVideoModel.create({
+                playlists_PlaylistID: PlaylistID,
+                videos_VideoID: video.VideoID
+              })
+            )
+          )
+            .then(function(arrayOfValuesOrErrors) {
+              console.log(arrayOfValuesOrErrors);
+            })
+            .catch(function(err) {
+              console.log(err.message);
+            });
+        }
+      });
+    } catch (err) {
+      console.log("Video POST error: ", err);
+    }
     /* If not create new record in video table*/
 
     /* Update Playlist Association PlaylistID : PlaylistVideoID : VideoID */
