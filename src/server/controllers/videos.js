@@ -56,12 +56,10 @@ module.exports = {
     } catch (err) {
       console.log("Video POST error: ", err);
     }
-    /* If not create new record in video table*/
-
-    /* Update Playlist Association PlaylistID : PlaylistVideoID : VideoID */
   },
   removeVideo: async (req, res, next) => {
     console.log("Remove video method called");
+    // Req Params expected vals: VideoID & PlaylistID
     /* Match Playlist ID : VideoID Values */
 
     /* Drop Record from the association table */

@@ -23,7 +23,7 @@ class App extends React.Component {
         {/* Home Page Route*/}
         <Route exact path="/" component={Home} />
         {/* User List Route (Experimental)*/}
-        <Route exact path="/users" component={UserPage} />
+        <Route exact path="/user" component={UserPage} />
         {/* List of Playlists made by User Route*/}
         <Route path="/user/:_id" component={UserPlaylistsPage} />
         {/* Playlist Video Listing Route */}

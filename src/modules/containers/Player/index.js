@@ -4,7 +4,7 @@ import CardColumns from "react-bootstrap/Card";
 import * as PlayerActions from "../../../actions/PlayerActions";
 import YoutubePlayer from "./YoutubePlayer";
 import { connect } from "react-redux";
-import { Button } from "react-bootstrap";
+import { Button } from "@material-ui/core";
 
 /* Player overlay with YouTube iframe and custom video listing column */
 

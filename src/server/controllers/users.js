@@ -16,10 +16,12 @@ signToken = user => {
 module.exports = {
   signUp: async (req, res, next) => {
     console.log("signUp() called");
+    //Unused, but kept for the future (Sign-up without google API)
   },
 
   signIn: async (req, res, next) => {
     console.log("signIn() called");
+    //Unused, but kept for the future (Sign-in without google API)
   },
 
   //Testing secret resource using JWT token
