@@ -28,11 +28,19 @@ class PlaylistVideosPage extends React.Component {
 
     return (
       <div>
-        <h1> Videos </h1>
-        <button className="btn btn-warning" onClick={() => this.addVideos()}>
+        <h1> Viewing Playlist: {this.props.playlistName}</h1>
+        <button
+          className="btn btn-warning"
+          onClick={() => this.addVideos()}
+          style={{
+            background: "rgba(153, 50, 204, 0.9)",
+            color: "#ffffff",
+            borderRadius: 8
+          }}
+        >
           Add All Videos to Queue
         </button>
-        <div>
+        <div style={{ paddingTop: 10 }}>
           <Videos
             videos={this.props.playlistVideosData}
             dispatch={this.props.AddPlaybackItem}
@@ -47,6 +55,7 @@ class PlaylistVideosPage extends React.Component {
 function mapStateToProps(state, props) {
   if (props.match.params._id) {
     return {
+      playlistName: state.userPlaylistVideos.PlaylistName,
       playlistVideosData: state.userPlaylistVideos.Videos,
       player: state.player
     };
