@@ -1,38 +1,43 @@
 import React from "react";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
+
 class VideoForm extends React.Component {
   state = {
     step: 1,
     videoLink: "",
-    videoData: ""
+    videoData: "",
   };
 
   nextStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step + 1
+      step: step + 1,
     });
   };
 
   prevStep = () => {
     const { step } = this.state;
     this.setState({
-      step: step - 1
+      step: step - 1,
     });
   };
 
-  handleChange = input => event => {
+  handleChange = (input) => (event) => {
     this.setState({ [input]: event.target.value });
   };
 
   render() {
     const { step } = this.state;
     const { videoLink, videoData } = this.state;
-    const values = { videoLink, videoData };
+    const { playlistId } = this.props;
+    const values = { videoLink, videoData, playlistId };
 
     switch (step) {
       case 1:
+        {
+          console.log("PLAYLIST ID IS" + playlistId);
+        }
         return (
           <StepOne
             nextStep={this.nextStep}

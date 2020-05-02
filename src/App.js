@@ -1,6 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import Home from "./modules/Home";
+import Guide from "./modules/Guide";
+import Rules from "./modules/Rules";
 import UserPage from "./modules/UserPage";
 import UserPlaylistsPage from "./modules/UserPlaylistsPage";
 import PlaylistVideosPage from "./modules/PlaylistVideosPage";
@@ -30,6 +32,10 @@ class App extends React.Component {
         <Route path="/Playlist/:_id" component={PlaylistVideosPage} />
         {/* Account Management Route */}
         <Route path="/Auth" component={Auth} />
+        {/* Guide Page Route*/}
+        <Route path="/guide" component={Guide} />
+        {/* Rules Page Route*/}
+        <Route path="/rules" component={Rules} />
       </div>
     );
   }

@@ -3,11 +3,17 @@ import Videos from "./containers/Videos";
 import { getPlaylistVideos } from "../actions/VideoActions";
 import { AddPlaybackItem } from "../actions/PlayerActions";
 import { connect } from "react-redux";
-import AddVideoForm from "./containers/Forms/AddVideoForm";
+import ModalVideoForm from "./containers/Forms/VideoImportWizard/ModalWindow";
 import { updatePlaybackQueue } from "../actions/playback";
 
 /* Playlist video page class for displaying all videos within user playlist, with functionalities of adding items to player queue */
 class PlaylistVideosPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
   componentDidMount() {
     const { params } = this.props.match;
     //Pull Videos from specified playlist ID
@@ -35,7 +41,7 @@ class PlaylistVideosPage extends React.Component {
           style={{
             background: "rgba(153, 50, 204, 0.9)",
             color: "#ffffff",
-            borderRadius: 8
+            borderRadius: 8,
           }}
         >
           Add All Videos to Queue
@@ -46,7 +52,7 @@ class PlaylistVideosPage extends React.Component {
             dispatch={this.props.AddPlaybackItem}
           />
         </div>
-        <AddVideoForm pageId={this.props.match.params._id} />
+        <ModalVideoForm playlistId={this.props.match.params._id} />
       </div>
     );
   }
@@ -57,7 +63,7 @@ function mapStateToProps(state, props) {
     return {
       playlistName: state.userPlaylistVideos.PlaylistName,
       playlistVideosData: state.userPlaylistVideos.Videos,
-      player: state.player
+      player: state.player,
     };
   }
 }

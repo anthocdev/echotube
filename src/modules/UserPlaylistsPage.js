@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as PlaylistActions from "../actions/PlaylistActions";
 import Playlists from "./containers/UserPlaylists";
+import CreatePlaylsit from "./containers/Forms/PlaylistManagement/CreatePlaylist";
 
 /* Page for displaying playlists of signed in user */
 class UserPlaylistsPage extends React.Component {
@@ -17,6 +18,7 @@ class UserPlaylistsPage extends React.Component {
       <div>
         <h1> Playlists </h1>
         <Playlists playlists={this.props.userPlaylist.Playlists} />
+        <CreatePlaylsit />
       </div>
     );
   }
@@ -24,7 +26,7 @@ class UserPlaylistsPage extends React.Component {
 
 function mapStateToProps(state, props) {
   return {
-    userPlaylist: state.userPlaylist
+    userPlaylist: state.userPlaylist,
   };
 }
 

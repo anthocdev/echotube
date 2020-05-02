@@ -11,19 +11,19 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 //Custom styles
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(4)
+    marginRight: theme.spacing(4),
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
-      "&:hover": { color: "white", textDecoration: "none" }
-    }
+      "&:hover": { color: "white", textDecoration: "none" },
+    },
   },
   navItem: {
     display: "none",
@@ -32,16 +32,16 @@ const useStyles = makeStyles(theme => ({
       display: "block",
       "&:hover": {
         color: "rgba(255,255,255,0.5)",
-        textDecoration: "none"
-      }
-    }
+        textDecoration: "none",
+      },
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
-  }
+      display: "flex",
+    },
+  },
 }));
 
 export default function PrimarySearchAppBar(isAuth) {
@@ -50,7 +50,7 @@ export default function PrimarySearchAppBar(isAuth) {
 
   const isMenuOpen = Boolean(anchorEl);
 
-  const handleProfileMenuOpen = event => {
+  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -130,6 +130,20 @@ export default function PrimarySearchAppBar(isAuth) {
     </div>
   );
 
+  const renderRules = (
+    <div>
+      <Typography
+        component={Link}
+        to="/rules"
+        className={classes.navItem}
+        variant="h7"
+        color="inherit"
+      >
+        Rules
+      </Typography>
+    </div>
+  );
+
   return (
     <div className={classes.grow}>
       <AppBar
@@ -149,6 +163,7 @@ export default function PrimarySearchAppBar(isAuth) {
           </Typography>
           {renderHome}
           {renderGuide}
+          {renderRules}
           <div className={classes.grow} />
           {userAuthRender}
         </Toolbar>

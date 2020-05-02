@@ -10,7 +10,7 @@ class StepTwo extends React.Component {
     await this.props.getYouTubeVideo(this.props.values.videoLink);
   }
 
-  saveAndContinue = e => {
+  saveAndContinue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
@@ -26,7 +26,10 @@ class StepTwo extends React.Component {
           />
           <Button
             onClick={() =>
-              this.props.addPlaylistVideo(2, this.props.youtube.data[0])
+              this.props.addPlaylistVideo(
+                values.playlistId,
+                this.props.youtube.data[0]
+              )
             }
           >
             Confirm
@@ -39,7 +42,7 @@ class StepTwo extends React.Component {
 
 function mapStateToProps(state, props) {
   return {
-    youtube: state.youtube
+    youtube: state.youtube,
   };
 }
 
