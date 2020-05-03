@@ -36,6 +36,11 @@ export const REMOVE_PLAYBACK_ITEM = "REMOVE_PLAYBACK_ITEM";
 export const GET_YOUTUBE_VIDEO = "GET_YOUTUBE_VIDEO";
 export const GET_YOUTUBE_VIDEO_ERROR = "GET_YOUTUBE_VIDEO_ERROR";
 
+/* Meta Data (EchoTube API) Actions */
+
+export const GET_METADATA = "GET_METADATA";
+export const GET_METADATA_ERROR = "GET_METADATA_ERROR";
+
 /* Deezer Actions */
 
 export const GET_DEEZER_BY_NAME = "GET_DEEZER_BY_NAME";

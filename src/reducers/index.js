@@ -8,6 +8,7 @@ import userPlaylistVideosReducer from "./userPlaylistVideos";
 // import userPlaylistReducer from "./userPlaylists";
 import YouTubeReducer from "./YouTubeReducer";
 import DeezerReducer from "./DeezerReducer";
+import MetadataReducer from "./MetaDataReducer";
 import playerReducer from "./player";
 import authReducer from "./auth";
 import userReducer from "./parseUser";
@@ -25,6 +26,7 @@ const allReducers = combineReducers({
   youtube: YouTubeReducer,
   form: formReducer,
   deezer: DeezerReducer,
+  metaData: MetadataReducer,
 });
 
 //Root reducer override for resetting all states(clearing cached data) after logout

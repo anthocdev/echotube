@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import DeezerDialog from "../Forms/DeezerManagement/DeezerDialog";
+import MetaDataInfo from "../MetaDataInfo/FullScreen";
 import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
@@ -96,7 +97,8 @@ export default function VideoCard({ video, dispatch }) {
         <Typography component="h5" variant="h5" className={styles.title}>
           {video.Name}
         </Typography>
-        <DeezerDialog video={video} />
+        {/* <DeezerDialog video={video} /> */}
+        <MetaDataInfo video={video} />
       </CardContent>
       <Button onClick={() => dispatch(video)} className={styles.button}>
         Add To Queue

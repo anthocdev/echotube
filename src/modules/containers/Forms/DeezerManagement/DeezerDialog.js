@@ -51,7 +51,7 @@ export default function DeezerDialog(props) {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Get Meta-Data
+        Find on Deezer
       </Button>
       <Dialog
         open={open}

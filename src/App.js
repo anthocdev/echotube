@@ -7,6 +7,7 @@ import UserPage from "./modules/UserPage";
 import UserPlaylistsPage from "./modules/UserPlaylistsPage";
 import PlaylistVideosPage from "./modules/PlaylistVideosPage";
 import Header from "./modules/Header";
+import Footer from "./modules/Footer";
 import Auth from "./modules/Auth";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./style/player.css";
@@ -36,6 +37,10 @@ class App extends React.Component {
         <Route path="/guide" component={Guide} />
         {/* Rules Page Route*/}
         <Route path="/rules" component={Rules} />
+
+        <div>
+          <Footer />
+        </div>
       </div>
     );
   }

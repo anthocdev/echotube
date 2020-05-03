@@ -1,22 +1,12 @@
-.App {
-  text-align: center;
-}
+.HomePage {
+  /* The image used */
+  background-image: url(./content/djbg.jpg);
 
-.App-logo {
-  height: 10vmin;
-}
+  /* Full height */
+  height: 100%;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 20vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
