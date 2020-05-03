@@ -108,7 +108,7 @@ export default function PrimarySearchAppBar(isAuth) {
         component={Link}
         to="/"
         className={classes.navItem}
-        variant="h7"
+        variant="subtitle1"
         color="inherit"
       >
         Home
@@ -122,7 +122,7 @@ export default function PrimarySearchAppBar(isAuth) {
         component={Link}
         to="/guide"
         className={classes.navItem}
-        variant="h7"
+        variant="subtitle1"
         color="inherit"
       >
         Guide
@@ -136,7 +136,7 @@ export default function PrimarySearchAppBar(isAuth) {
         component={Link}
         to="/rules"
         className={classes.navItem}
-        variant="h7"
+        variant="subtitle1"
         color="inherit"
       >
         Rules

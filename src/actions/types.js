@@ -35,3 +35,8 @@ export const REMOVE_PLAYBACK_ITEM = "REMOVE_PLAYBACK_ITEM";
 /* YouTube Actions */
 export const GET_YOUTUBE_VIDEO = "GET_YOUTUBE_VIDEO";
 export const GET_YOUTUBE_VIDEO_ERROR = "GET_YOUTUBE_VIDEO_ERROR";
+
+/* Deezer Actions */
+
+export const GET_DEEZER_BY_NAME = "GET_DEEZER_BY_NAME";
+export const GET_DEEZER_BY_NAME_ERROR = "GET_DEEZER_BY_NAME_ERROR";

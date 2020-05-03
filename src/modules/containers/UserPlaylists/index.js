@@ -5,17 +5,17 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 /* function for displaying user playlists using playlist cards */
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   paper: {
     height: 140,
-    width: 100
+    width: 100,
   },
   control: {
-    padding: theme.spacing(2)
-  }
+    padding: theme.spacing(2),
+  },
 }));
 
 export default function UserPlaylists({ playlists }) {
@@ -27,7 +27,7 @@ export default function UserPlaylists({ playlists }) {
 
   const userPlaylistList = (
     <div className="card">
-      {playlists.map(playlist => (
+      {playlists.map((playlist) => (
         <UserPlaylistCard playlist={playlist} key={playlist.PlaylistID} />
       ))}
     </div>
@@ -37,9 +37,13 @@ export default function UserPlaylists({ playlists }) {
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
-          {playlists.map(value => (
+          {playlists.map((value, idx) => (
             <Grid key={value} item>
-              <UserPlaylistCard playlist={value} key={value.PlaylistID} />
+              <UserPlaylistCard
+                playlist={value}
+                key={value.PlaylistID}
+                index={idx}
+              />
             </Grid>
           ))}
         </Grid>
