@@ -8,17 +8,20 @@ module.exports = seqlInstance.define(
     PlaylistVideoID: {
       type: Sequalize.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     playlists_PlaylistID: {
-      type: Sequalize.INTEGER
+      type: Sequalize.INTEGER,
     },
     videos_VideoID: {
-      type: Sequalize.INTEGER
-    }
+      type: Sequalize.INTEGER,
+    },
+    metadata_id: {
+      type: Sequalize.INTEGER,
+    },
   },
   {
     timestamps: false,
-    freezeTableName: true
+    freezeTableName: true,
   }
 );

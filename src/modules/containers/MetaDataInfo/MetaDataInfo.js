@@ -11,18 +11,43 @@ class MetaDataInfo extends React.Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    this.props.onOpen(
+      this.props.getMetadata(this.props.video.playlistvideo.PlaylistVideoID)
+    );
+  }
   render() {
+    const deezerSerach = (
+      <ListItem button>
+        <DeezerDialog video={this.props.video} />
+      </ListItem>
+    );
+
+    if (!this.props.metaData)
+      return (
+        <List>
+          {deezerSerach}
+          <Divider />
+          <div>No Metadata Found</div>
+        </List>
+      );
     return (
       <List>
-        <ListItem button>
-          <DeezerDialog video={this.props.video} />
-        </ListItem>
+        {deezerSerach}
         <Divider />
         <ListItem button>
           <ListItemText
             primary="Default notification ringtone"
             secondary="Tethys"
           />
+          <div>
+            <pre>{JSON.stringify(this.props.video, null, 2)}</pre>
+          </div>
+        </ListItem>
+        <ListItem>
+          <ListItemText>
+            <pre>{JSON.stringify(this.props.metaData, null, 2)}</pre>
+          </ListItemText>
         </ListItem>
       </List>
     );
@@ -31,7 +56,7 @@ class MetaDataInfo extends React.Component {
 
 const mapStateToProps = (store) => {
   return {
-    metaData: store.metaData,
+    metaData: store.metaData.Metadata.metadatum,
   };
 };
 

@@ -67,7 +67,7 @@ export default function FullScreen(props) {
           </Toolbar>
         </AppBar>
 
-        <MetaDataInfo video={video} />
+        <MetaDataInfo video={video} onOpen={handleClickOpen} />
       </Dialog>
     </div>
   );

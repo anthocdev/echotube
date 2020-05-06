@@ -6,7 +6,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import DeezerDialog from "../Forms/DeezerManagement/DeezerDialog";
 import MetaDataInfo from "../MetaDataInfo/FullScreen";
 import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
 
@@ -105,34 +104,4 @@ export default function VideoCard({ video, dispatch }) {
       </Button>
     </Card>
   );
-  // <div className="card" style={{ width: "50rem" }}>
-  //   <div className="card-img-top p-1">
-  //     <img src={`https://i.ytimg.com/vi/${video.VideoLink}/hqdefault.jpg`} />
-  //   </div>
-  //   <div className="content">
-  //     <Nav.Link
-  //       className="VideoName"
-  //       href={`https://www.youtube.com/watch?v=${video.VideoLink}`}
-  //     >
-  //       {video.Name}
-  //     </Nav.Link>
-  //     <div
-  //       style={{
-  //         backgroundColor: "rgba(136, 6, 187, 0.356)",
-  //         color: "rgba(128, 11, 83, 0.959)"
-  //       }}
-  //     >
-  //       <div>Description: {video.Description}</div>
-  //     </div>
-  //     <div className="ChannelName">Channel Name: {video.ChannelName}</div>
-
-  //     <button
-  //       className="btn btn-dark"
-  //       style={{ margin: "4px" }}
-  //       onClick={() => dispatch(video)}
-  //     >
-  //       Add Video to Queue
-  //     </button>
-  //   </div>
-  // </div>
 }

@@ -6,6 +6,7 @@ const PlaylistController = require("./controllers/playlist");
 const VideoController = require("./controllers/videos");
 const YouTubeController = require("./controllers/youtube");
 const DeezerController = require("./controllers/deezer");
+const MetadataController = require("./controllers/metadata");
 const passport = require("passport");
 const passportConf = require("./passport");
 const PassportGoogle = passport.authenticate("googleToken", { session: false });
@@ -37,6 +38,13 @@ router
   .delete(passportJWT, PlaylistController.removePlaylist);
 /* Playlist Routes End */
 
+/* MetaData Routes */
+
+router.route("/metadata").get(MetadataController.getMetadata);
+router.route("/metadata").post(MetadataController.addMetadata);
+
+/* MetaData Routes End */
+
 /* Video Routes */
 router.route("/video").post(passportJWT, VideoController.addVideo);
 router.route("/video").delete(passportJWT, VideoController.removeVideo);
@@ -48,6 +56,7 @@ router.route("/getVideo").get(passportJWT, YouTubeController.getVideo);
 /* YouTube API Call Routes End */
 
 /* Deezer API Call Routes */
+
 /* Query does not require JWT confirmation since API Key is not needed */
 router.route("/deezerQuery").get(DeezerController.searchQuery);
 
@@ -56,11 +65,11 @@ router.route("/deezerQuery").get(DeezerController.searchQuery);
 //USER LIST USING SERIALIZE
 router.get("/st/", async (req, res, next) => {
   UserModel.findAll()
-    .then(users => {
+    .then((users) => {
       console.log(users);
       res.sendStatus(200);
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 });
 
 //Get list of users

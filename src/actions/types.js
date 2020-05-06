@@ -40,7 +40,8 @@ export const GET_YOUTUBE_VIDEO_ERROR = "GET_YOUTUBE_VIDEO_ERROR";
 
 export const GET_METADATA = "GET_METADATA";
 export const GET_METADATA_ERROR = "GET_METADATA_ERROR";
-
+export const ADD_METADATA = "ADD_METADATA";
+export const ADD_METADATA_ERROR = "ADD_METADATA_ERROR";
 /* Deezer Actions */
 
 export const GET_DEEZER_BY_NAME = "GET_DEEZER_BY_NAME";
