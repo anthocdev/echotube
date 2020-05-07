@@ -10,7 +10,9 @@ class EditPlaylist extends React.Component {
       PlaylistName: "",
       PlaylistImageLink: "",
       VerifiedImageLink: "",
+      PlaylistID: "",
       ValidImage: false,
+      errorMessage: "",
     };
 
     this.imageLinkInput = React.createRef();
@@ -24,6 +26,7 @@ class EditPlaylist extends React.Component {
       PlaylistName: this.props.userPlaylist[playlistIndex].Name,
       PlaylistImageLink: this.props.userPlaylist[playlistIndex]
         .PlaylistImageLink,
+      PlaylistID: this.props.userPlaylist[playlistIndex].PlaylistID,
     });
   }
 
@@ -36,13 +39,45 @@ class EditPlaylist extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  async validForm(playlistData) {
+    var isValid = true;
+    var error = "";
+    if (!playlistData.PlaylistName) {
+      isValid = false;
+      error = error + "Invalid Playlist Name \n";
+    }
+
+    if (!playlistData.PlaylistImageLink) {
+      isValid = false;
+      error = error + "Invalid Image, Please Verify It. \n";
+    }
+
+    await this.setState({
+      errorMessage: error,
+    });
+    return isValid;
+  }
+
+  async handleSubmit(event) {
     event.preventDefault();
     /* Validation Check */
     /* Request Creation To API */
-    alert("A name was submitted: " + this.state);
+    var playlistObject = {
+      PlaylistName: this.state.PlaylistName,
+      PlaylistImageLink: this.state.VerifiedImageLink,
+      PlaylistID: this.state.PlaylistID,
+    };
+
+    if (await this.validForm(playlistObject)) {
+      this.props.editUserPlaylist(playlistObject);
+    } else {
+      alert(this.state.errorMessage);
+    }
   }
 
+  confirmDeletion(playlistId) {
+    this.props.deleteUserPlaylist(playlistId);
+  }
   async dispImage() {
     this.setState({
       ValidImage: await ImageVerify(this.state.PlaylistImageLink),
@@ -95,10 +130,13 @@ class EditPlaylist extends React.Component {
           )}
         </label>
         <Button variant="outlined" color="primary" type="submit">
-          {" "}
-          Confirm Changes{" "}
+          Confirm Changes
         </Button>
-        <Button variant="outlined" color="secondary">
+        <Button
+          onClick={() => this.confirmDeletion(this.state.PlaylistID)}
+          variant="outlined"
+          color="secondary"
+        >
           Delete Playlist
         </Button>
       </form>

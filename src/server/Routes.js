@@ -36,6 +36,7 @@ router.route("/playlist").post(passportJWT, PlaylistController.addPlaylist);
 router
   .route("/playlist")
   .delete(passportJWT, PlaylistController.removePlaylist);
+router.route("/playlist").put(passportJWT, PlaylistController.updatePlaylist);
 /* Playlist Routes End */
 
 /* MetaData Routes */

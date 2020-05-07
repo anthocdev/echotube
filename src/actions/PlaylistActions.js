@@ -31,8 +31,73 @@ export const getUserPlaylists = () => {
   };
 };
 
-export const createUserPlaylist = () => {};
+export const createUserPlaylist = (data) => {
+  return async (dispatch) => {
+    try {
+      console.log(data);
+      const res = await axios.post("http://localhost:3001/api/playlist", {
+        params: {
+          data,
+        },
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      dispatch({
+        type: CREATE_USER_PLAYLIST,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: CREATE_USER_PLAYLIST_ERROR,
+        payload: "Invalid POST Request",
+      });
+    }
+  };
+};
 
-export const deleteUserPlaylist = () => {};
+export const deleteUserPlaylist = (id) => {
+  return async (dispatch) => {
+    try {
+      console.log(id);
 
-export const editUserPlaylist = () => {};
+      const res = await axios.delete("http://localhost:3001/api/playlist", {
+        data: { id },
+      });
+      dispatch({
+        type: DELETE_USER_PLAYLIST,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: DELETE_USER_PLAYLIST_ERROR,
+        payload: err,
+      });
+    }
+  };
+};
+
+export const editUserPlaylist = (data) => {
+  return async (dispatch) => {
+    try {
+      console.log(data);
+      const res = await axios.put("http://localhost:3001/api/playlist", {
+        params: {
+          data,
+        },
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      dispatch({
+        type: EDIT_USER_PLAYLIST,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: EDIT_USER_PLAYLIST_ERROR,
+        payload: err,
+      });
+    }
+  };
+};

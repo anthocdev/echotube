@@ -1,5 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import * as PlaylistActions from "../../../../actions/PlaylistActions";
 
 class CreatePlaylist extends React.Component {
   constructor(props) {
@@ -9,11 +11,31 @@ class CreatePlaylist extends React.Component {
       PlaylistImageLink: "",
       VerifiedImageLink: "",
       ValidImage: false,
+      errorMessage: "",
     };
 
     this.imageLinkInput = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async validForm(playlistData) {
+    var isValid = true;
+    var error = "";
+    if (!playlistData.PlaylistName) {
+      isValid = false;
+      error = error + "Invalid Playlist Name \n";
+    }
+
+    if (!playlistData.PlaylistImageLink) {
+      isValid = false;
+      error = error + "Invalid Image, Please Verify It. \n";
+    }
+
+    await this.setState({
+      errorMessage: error,
+    });
+    return isValid;
   }
 
   handleChange(event) {
@@ -25,11 +47,20 @@ class CreatePlaylist extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     /* Validation Check */
     /* Request Creation To API */
-    alert("A name was submitted: " + this.state);
+    var playlistObject = {
+      PlaylistName: this.state.PlaylistName,
+      PlaylistImageLink: this.state.VerifiedImageLink,
+    };
+
+    if (await this.validForm(playlistObject)) {
+      this.props.createUserPlaylist(playlistObject);
+    } else {
+      alert(this.state.errorMessage);
+    }
   }
 
   async dispImage() {
@@ -97,4 +128,10 @@ function ImageVerify(url) {
   });
 }
 
-export default CreatePlaylist;
+function mapStateToProps(state, props) {
+  return {
+    userPlaylist: state.userPlaylist,
+  };
+}
+
+export default connect(mapStateToProps, PlaylistActions)(CreatePlaylist);

@@ -1,41 +1,19 @@
-// const playlistReducer = (
-//   state = {
-//     playlistData: [],
-//     fetching: false,
-//     fetched: false,
-//     error: null
-//   },
-//   action
-// ) => {
-//   switch (action.type) {
-//     case "FETCH_PLAYLIST_DATA_START": {
-//       return { ...state, fetching: true };
-//     }
-//     case "FETCH_PLAYLIST_DATA_SUCCESS": {
-//       return {
-//         ...state,
-//         fetching: false,
-//         fetched: true,
-//         playlistData: action.payload
-//       };
-//     }
-//     case "FETCH_PLAYLIST_DATA_ERROR": {
-//       return { ...state, fetching: false, error: action.payload };
-//     }
-//     default: {
-//       return state;
-//     }
-//   }
-// };
-
-// export default playlistReducer;
-
-import { GET_USER_PLAYLISTS, GET_USER_PLAYLISTS_ERROR } from "../actions/types";
+import {
+  GET_USER_PLAYLISTS,
+  GET_USER_PLAYLISTS_ERROR,
+  CREATE_USER_PLAYLIST,
+  CREATE_USER_PLAYLIST_ERROR,
+  EDIT_USER_PLAYLIST,
+  EDIT_USER_PLAYLIST_ERROR,
+  DELETE_USER_PLAYLIST,
+  DELETE_USER_PLAYLIST_ERROR,
+} from "../actions/types";
 
 const DEFAULT_STATE = {
   Nickname: "",
   Playlists: "",
-  errorMessage: ""
+  errorMessage: "",
+  testField: [],
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -45,12 +23,45 @@ export default (state = DEFAULT_STATE, action) => {
         ...state,
         Nickname: action.payload.Nickname,
         Playlists: action.payload.Playlists,
-        errorMessage: ""
+        errorMessage: "",
       };
     case GET_USER_PLAYLISTS_ERROR:
       return {
         ...state,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+      };
+    case CREATE_USER_PLAYLIST:
+      return {
+        ...state,
+        testField: action.payload,
+        errorMessage: "",
+      };
+    case CREATE_USER_PLAYLIST_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
+    case EDIT_USER_PLAYLIST:
+      return {
+        ...state,
+        testField: action.payload,
+        errorMessage: "",
+      };
+    case EDIT_USER_PLAYLIST_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
+    case DELETE_USER_PLAYLIST:
+      return {
+        ...state,
+        testField: action.payload,
+        errorMessage: "",
+      };
+    case DELETE_USER_PLAYLIST_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
       };
     default:
       return state;
