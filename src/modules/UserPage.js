@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import UserPlaylistPage from "./UserPlaylistsPage";
+import "../style/userpage.css";
 /* Page for displaying users stored in the server */
 class UserPage extends React.Component {
   componentDidMount() {
@@ -10,11 +11,19 @@ class UserPage extends React.Component {
 
   render() {
     const Loaded = (
-      <div>
-        <h1> Profile Page</h1>
-        <h1> {this.props.userData.Nickname}</h1>
-        <img src={this.props.userData.ProfileImage} />
+      <div className="container-fluid">
+        <h1 className="header"> Profile Page</h1>
+        <div className="profile">
+          <h1> {this.props.userData.Nickname}</h1>
+          <img
+            className="profile-image"
+            src={this.props.userData.ProfileImage}
+            width="200px"
+            height="200px"
+          />
+        </div>
         <UserPlaylistPage />
+        <div className="bluroverlay" />
       </div>
     );
     const Loading = (
@@ -31,9 +40,9 @@ class UserPage extends React.Component {
   }
 }
 
-const mapStateToProps = store => {
+const mapStateToProps = (store) => {
   return {
-    userData: store.user
+    userData: store.user,
   };
 };
 

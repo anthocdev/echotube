@@ -4,7 +4,7 @@ import VideoItem from "../../../modules/containers/Player/VideoItem";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
 
-/* Example Video Object for Testing */
+/* Example Video Object for Integration Testing with API Data Structure */
 const data = {
   VideoID: 27,
   Name: "Castion - El Zorro",
@@ -16,7 +16,7 @@ const data = {
 };
 
 describe("Individual Video Item Module Testing", () => {
-  it("Renders Successfully", () => {
+  it("Renders Successfully with Current Structure", () => {
     const div = document.createElement("div");
 
     ReactDOM.render(

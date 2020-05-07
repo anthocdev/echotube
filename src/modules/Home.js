@@ -1,6 +1,7 @@
 import React from "react";
 import VideoForm from "./containers/Forms/VideoImportWizard/VideoForm";
 import { Typography, Button } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import "../style/home.css";
 import backgroundImage from "../content/djbg.jpg";
 /* Home page place holder - Currently one of the routes for testing */
@@ -24,50 +25,26 @@ class HomePage extends React.Component {
   onSubmit = (data) => {
     console.log(data);
   };
+
   render() {
     return (
-      <div>
-        <div className="HomePage">
-          <a>Home Page Placeholder</a>
-        </div>
-        <div className="center">
-          <Typography
-            style={{ color: "rgba(153, 50, 204, 0.9)" }}
-            align="center"
-            variant="h1"
-            marked="center"
-          >
-            EchoTube
-          </Typography>
-          <Typography
-            color="inherit"
-            align="center"
-            variant="h2"
-            marked="center"
-          >
-            Archive your Playlists
-          </Typography>
-          <Typography
-            color="inherit"
-            align="center"
-            variant="h5"
-            className={styles.h5}
-          >
-            Because YouTube will not.
-          </Typography>
-
-          <Button
-            variant="contained"
-            style={{
-              marginTop: "20px",
-              minWidth: "200px",
-              minHeight: "50px",
-              color: "rgba(153, 50, 204, 0.9)",
-              backgroundColor: "rgba(200, 155, 100, 0.9)",
-            }}
-          >
-            Guide Me
-          </Button>
+      <div className="overlay">
+        <div class="container">
+          {/* Small box for introduction */}
+          <div class="homebox">
+            <h1>
+              {" "}
+              Welcome to EchoTube
+              <p>
+                Here to provide you with reliable playlist management, because
+                YouTube will not. Click below to get introduced!
+              </p>
+              <button class="btn btn-outline-secondary btn-lg">
+                Guide Page
+              </button>{" "}
+            </h1>
+          </div>
+          {/* Small box for introduction */}
         </div>
       </div>
     );

@@ -1,104 +1,101 @@
 import React from "react";
-import VideoItem from "./VideoItem";
-import CardColumns from "react-bootstrap/Card";
-import * as PlayerActions from "../../../actions/PlayerActions";
-import YoutubePlayer from "./YoutubePlayer";
-import { connect } from "react-redux";
-import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import VideocamSharpIcon from "@material-ui/icons/VideocamSharp";
+import CloseIcon from "@material-ui/icons/Close";
+import Slide from "@material-ui/core/Slide";
+import Player from "./PlayerInstance";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
-/* Player overlay with YouTube iframe and custom video listing column */
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: "relative",
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+}));
+const styles = (setTheme) => ({
+  core: {
+    margin: 0,
+    padding: setTheme.spacing(2),
+  },
+  closeButton: {
+    position: "absolute",
+    right: setTheme.spacing(1),
+    top: setTheme.spacing(1),
+    color: "#FFFFFF",
+  },
+});
 
-class Player extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  state = {
-    currentlyPlaying: null,
-    playIndex: null
-  };
-
-  removeFromQueue = index => {
-    this.props.RemovePlaybackItem(index);
-  };
-
-  selectVideo = (index, videoLink) => {
-    this.props.SetActiveItem(index);
-
-    this.setState({
-      currentlyPlaying: videoLink,
-      playIndex: index
-    });
-  };
-
-  UpdatePlayback = () => {
-    if (this.props.PlaybackQueue[this.props.CurrentIndex] != undefined) {
-      return this.props.PlaybackQueue[this.props.CurrentIndex].VideoLink;
-    } else {
-      return null;
-    }
-  };
-
-  render() {
-    const playerVisible = this.props.player.IsActive;
-    const mapVideos = (
-      <div>
-        {this.props.player.PlaybackQueue.map((data, i) => (
-          <CardColumns className="videoColumns">
-            <VideoItem
-              video={data}
-              key={i}
-              index={i}
-              selectedVideo={this.selectVideo}
-            />
-            <Button onClick={() => this.removeFromQueue(i)}>Remove</Button>
-          </CardColumns>
-        ))}
-      </div>
-    ); //Generate video list by mapping data from playbackItems state
-
-    const playerContainer = (
-      <div className="playerMain">
-        {" "}
-        <div className="left-container">
-          <YoutubePlayer videoId={this.UpdatePlayback()} />
-        </div>
-        <div className="right-container">
-          <div className="playlistColumn">
-            {this.props.player.PlaybackQueue.length > 0 ? (
-              mapVideos
-            ) : (
-              <div>No videos available</div>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-
-    return (
-      <div>
-        <button
-          className="btn btn-dark PlayerButton"
-          onClick={() => this.props.TogglePlayer()}
+const CustomDialogTitle = withStyles(styles)((props) => {
+  const { onClose, classes, children } = props;
+  return (
+    <DialogTitle
+      className={classes.root}
+      style={{ backgroundColor: "rgba(153, 50, 204, 0.9)", color: "#FFFFFF" }}
+    >
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton
+          className={classes.closeButton}
+          aria-label="close"
+          onClick={onClose}
         >
-          {/*Change playerVisible property*/}
-          Toggle Player
-        </button>
-        <div className="Main">
-          {playerVisible ? playerContainer : <div></div>}
-          {/*Display player container based on playerVisible property*/}
-        </div>
-      </div>
-    );
-  }
-}
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+});
 
-function mapStateToProps(store, props) {
-  return {
-    player: store.player,
-    PlaybackQueue: store.player.PlaybackQueue,
-    CurrentIndex: store.player.CurrentIndex
+const TransitionEffect = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+export default function FullScreen(props) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
   };
-}
 
-export default connect(mapStateToProps, PlayerActions)(Player);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const { video } = props;
+  return (
+    <div>
+      <IconButton
+        edge="start"
+        color="inherit"
+        onClick={handleClickOpen}
+        aria-label="Open Player"
+      >
+        <VideocamSharpIcon variant="solid" />
+      </IconButton>
+
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={TransitionEffect}
+      >
+        <CustomDialogTitle onClose={handleClose}>
+          EchoTube Playback
+        </CustomDialogTitle>
+
+        <Player />
+      </Dialog>
+    </div>
+  );
+}

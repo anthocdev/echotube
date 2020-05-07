@@ -1,0 +1,12 @@
+.playlist {
+  text-align: center;
+  position: relative;
+}
+
+.playlist h1 {
+  color: rgb(209, 57, 223);
+  padding-top: 10px;
+  padding-bottom: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}

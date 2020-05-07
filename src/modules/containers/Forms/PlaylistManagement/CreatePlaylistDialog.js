@@ -50,8 +50,13 @@ export default function CreatePlaylistModal(props) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Create Playlist
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+        onClick={handleClickOpen}
+      >
+        Create a New Playlist
       </Button>
       <Dialog
         open={open}
@@ -60,7 +65,7 @@ export default function CreatePlaylistModal(props) {
         disableBackdropClick={true}
       >
         <CustomDialogTitle onClose={handleClose}>
-          Create a Playlist
+          Create a New Playlist
         </CustomDialogTitle>
         <DialogContent>
           <CreatePlaylist />

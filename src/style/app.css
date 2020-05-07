@@ -1,0 +1,29 @@
+.overlay {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.bluroverlay {
+  position: absolute;
+  filter: brightness(10%);
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: rgba(211, 195, 195, 0.6);
+}
+
+.intro {
+  background-image: url("../content/djbg.jpg");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  height: calc(100vh - 60px);
+  z-index: -2;
+}

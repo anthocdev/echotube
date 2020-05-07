@@ -48,11 +48,6 @@ export default function UserPlaylists({ playlists }) {
           ))}
         </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.control}>
-          <Grid container></Grid>
-        </Paper>
-      </Grid>
     </Grid>
   );
 

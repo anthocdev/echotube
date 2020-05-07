@@ -1,0 +1,8 @@
+.playlistheader {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: rgb(245, 195, 255);
+  border-radius: 15px;
+  text-shadow: rgba(207, 203, 203, 0.74) 1px 1px;
+}

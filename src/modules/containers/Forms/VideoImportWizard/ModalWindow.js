@@ -50,8 +50,16 @@ export default function VideoWizard(props) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Import Video
+      <Button
+        variant="contained"
+        style={{
+          backgroundColor: "rgba(255,255,255,0.7)",
+          marginTop: "20px",
+          marginBottom: "20px",
+        }}
+        onClick={handleClickOpen}
+      >
+        Import a New Video
       </Button>
       <Dialog
         open={open}

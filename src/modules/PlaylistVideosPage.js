@@ -4,7 +4,8 @@ import { getPlaylistVideos } from "../actions/VideoActions";
 import { AddPlaybackItem } from "../actions/PlayerActions";
 import { connect } from "react-redux";
 import ModalVideoForm from "./containers/Forms/VideoImportWizard/ModalWindow";
-import { updatePlaybackQueue } from "../actions/playback";
+import { Button, Divider } from "@material-ui/core";
+import "../style/playlist.css";
 
 /* Playlist video page class for displaying all videos within user playlist, with functionalities of adding items to player queue */
 class PlaylistVideosPage extends React.Component {
@@ -29,23 +30,29 @@ class PlaylistVideosPage extends React.Component {
   }
   render() {
     if (!this.props.playlistVideosData.length) {
-      return <div>--No Videos--</div>;
+      return (
+        <div>
+          --No Videos--
+          <ModalVideoForm playlistId={this.props.match.params._id} />
+        </div>
+      );
     }
 
     return (
-      <div>
+      <div className="playlist">
+        <div className="bluroverlay" />
         <h1> Viewing Playlist: {this.props.playlistName}</h1>
-        <button
-          className="btn btn-warning"
-          onClick={() => this.addVideos()}
+        <Button
           style={{
-            background: "rgba(153, 50, 204, 0.9)",
-            color: "#ffffff",
-            borderRadius: 8,
+            backgroundColor: "rgba(155, 57, 223,0.8)",
+            color: "#FFFFFF",
           }}
+          variant="contained"
+          onClick={() => this.addVideos()}
         >
           Add All Videos to Queue
-        </button>
+        </Button>
+        <Divider />
         <div style={{ paddingTop: 10 }}>
           <Videos
             videos={this.props.playlistVideosData}

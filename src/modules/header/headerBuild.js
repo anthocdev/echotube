@@ -9,6 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import Player from "../containers/Player";
 
 //Custom styles
 const useStyles = makeStyles((theme) => ({
@@ -144,10 +145,24 @@ export default function PrimarySearchAppBar(isAuth) {
     </div>
   );
 
+  const renderContact = (
+    <div>
+      <Typography
+        component={Link}
+        to="/contact"
+        className={classes.navItem}
+        variant="subtitle1"
+        color="inherit"
+      >
+        Contact
+      </Typography>
+    </div>
+  );
+
   return (
     <div className={classes.grow}>
       <AppBar
-        style={{ background: "rgba(153, 50, 204, 0.9)" }} //Overriding color
+        style={{ background: "rgba(153, 50, 204, 0.9)", height: "60px" }} //Overriding color
         position="static"
       >
         <Toolbar>
@@ -164,7 +179,10 @@ export default function PrimarySearchAppBar(isAuth) {
           {renderHome}
           {renderGuide}
           {renderRules}
+          {renderContact}
+
           <div className={classes.grow} />
+          <Player />
           {userAuthRender}
         </Toolbar>
       </AppBar>
