@@ -4,15 +4,40 @@ import HeaderMain from "./header/headerBuild";
 import * as actions from "../actions";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.responseGoogle = this.responseGoogle.bind(this);
+    this.LogoutSuccess = this.LogoutSuccess.bind(this);
+  }
+  async responseGoogle(response) {
+    console.log("Google Response", response);
+    await this.props.googleOauth(response.accessToken);
+    if (!this.props.errorMessage) {
+      await this.props.getProfileInfo();
+    }
+  }
+
+  async LogoutSuccess() {
+    console.log("Successfully Logged Out");
+    this.props.signOut();
+  }
+
   render() {
     //Using functional header with states
-    return <HeaderMain isAuth={this.props.isAuth} />;
+    return (
+      <HeaderMain
+        isAuth={this.props.isAuth}
+        responseGoogle={this.responseGoogle}
+        logoutSuccess={this.LogoutSuccess}
+      />
+    );
   }
 }
 
-const mapStateToProps = store => {
+const mapStateToProps = (store) => {
   return {
-    isAuth: store.auth.isAuth
+    isAuth: store.auth.isAuth,
+    userData: store.user.userData,
   };
 };
 

@@ -1,13 +1,16 @@
 import {
   GET_PLAYLIST_VIDEOS,
-  GET_PLAYLIST_VIDEOS_ERROR
+  GET_PLAYLIST_VIDEOS_ERROR,
+  DELETE_PLAYLIST_VIDEO,
+  DELETE_PLAYLIST_VIDEO_ERROR,
 } from "../actions/types";
 
 const DEFAULT_STATE = {
   PlaylistID: "",
   PlaylistName: "",
   Videos: [],
-  errorMessage: ""
+  errorMessage: "",
+  successMessage: "",
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -18,12 +21,23 @@ export default (state = DEFAULT_STATE, action) => {
         PlaylistID: action.payload.PlaylistID,
         PlaylistName: action.payload.Name,
         Videos: action.payload.Videos,
-        errorMessage: ""
+        errorMessage: "",
       };
     case GET_PLAYLIST_VIDEOS_ERROR:
       return {
         ...state,
-        errorMessage: action.payload
+        errorMessage: action.payload,
+      };
+    case DELETE_PLAYLIST_VIDEO:
+      return {
+        ...state,
+        successMessage: "",
+        errorMessage: "",
+      };
+    case DELETE_PLAYLIST_VIDEO_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
       };
     default:
       return state;

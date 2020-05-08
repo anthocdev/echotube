@@ -49,6 +49,7 @@ module.exports = {
             { Name: PlaylistName, PlaylistImageLink: PlaylistImageLink },
             { where: { PlaylistID: PlaylistID } }
           );
+          res.sendStatus(200);
         } else {
           res.sendStatus(403); //Forbidden
         }

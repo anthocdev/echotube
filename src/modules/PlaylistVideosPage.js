@@ -1,6 +1,9 @@
 import React from "react";
 import Videos from "./containers/Videos";
-import { getPlaylistVideos } from "../actions/VideoActions";
+import {
+  getPlaylistVideos,
+  removePlaylistVideo,
+} from "../actions/VideoActions";
 import { AddPlaybackItem } from "../actions/PlayerActions";
 import { connect } from "react-redux";
 import ModalVideoForm from "./containers/Forms/VideoImportWizard/ModalWindow";
@@ -57,6 +60,7 @@ class PlaylistVideosPage extends React.Component {
           <Videos
             videos={this.props.playlistVideosData}
             dispatch={this.props.AddPlaybackItem}
+            delDispatch={this.props.removePlaylistVideo}
           />
         </div>
         <ModalVideoForm playlistId={this.props.match.params._id} />
@@ -75,6 +79,8 @@ function mapStateToProps(state, props) {
   }
 }
 
-export default connect(mapStateToProps, { getPlaylistVideos, AddPlaybackItem })(
-  PlaylistVideosPage
-);
+export default connect(mapStateToProps, {
+  getPlaylistVideos,
+  removePlaylistVideo,
+  AddPlaybackItem,
+})(PlaylistVideosPage);

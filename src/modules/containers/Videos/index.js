@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Videos({ videos, dispatch }) {
+export default function Videos({ videos, dispatch, delDispatch }) {
   const classes = useStyles();
   const noVideosMessage = <p>No videos found in this playlist.</p>;
 
@@ -38,6 +38,7 @@ export default function Videos({ videos, dispatch }) {
               <UserVideoCard
                 video={value}
                 dispatch={dispatch}
+                delDispatch={delDispatch}
                 key={value.PlaylistID}
               />
             </Grid>

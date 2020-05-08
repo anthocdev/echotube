@@ -35,14 +35,16 @@ export const createUserPlaylist = (data) => {
   return async (dispatch) => {
     try {
       console.log(data);
-      const res = await axios.post("http://localhost:3001/api/playlist", {
-        params: {
-          data,
-        },
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      const res = await axios
+        .post("http://localhost:3001/api/playlist", {
+          params: {
+            data,
+          },
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then(() => dispatch(getUserPlaylists()));
       dispatch({
         type: CREATE_USER_PLAYLIST,
         payload: res.data,
@@ -61,9 +63,11 @@ export const deleteUserPlaylist = (id) => {
     try {
       console.log(id);
 
-      const res = await axios.delete("http://localhost:3001/api/playlist", {
-        data: { id },
-      });
+      const res = await axios
+        .delete("http://localhost:3001/api/playlist", {
+          data: { id },
+        })
+        .then(() => dispatch(getUserPlaylists()));
       dispatch({
         type: DELETE_USER_PLAYLIST,
         payload: res.data,
@@ -81,14 +85,16 @@ export const editUserPlaylist = (data) => {
   return async (dispatch) => {
     try {
       console.log(data);
-      const res = await axios.put("http://localhost:3001/api/playlist", {
-        params: {
-          data,
-        },
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      const res = await axios
+        .put("http://localhost:3001/api/playlist", {
+          params: {
+            data,
+          },
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then(() => dispatch(getUserPlaylists()));
       dispatch({
         type: EDIT_USER_PLAYLIST,
         payload: res.data,

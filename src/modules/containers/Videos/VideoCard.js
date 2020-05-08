@@ -77,7 +77,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
 }));
 
 /* Video card display function for video objects */
-export default function VideoCard({ video, dispatch }) {
+export default function VideoCard({ video, dispatch, delDispatch }) {
   const styles = useStyles();
   const shadowStyles = useOverShadowStyles();
 
@@ -99,6 +99,10 @@ export default function VideoCard({ video, dispatch }) {
         {/* <DeezerDialog video={video} /> */}
         <MetaDataInfo video={video} />
       </CardContent>
+      <Button onClick={() => delDispatch(video.playlistvideo)}>
+        Delete Video
+      </Button>
+
       <Button onClick={() => dispatch(video)} className={styles.button}>
         Add To Queue
       </Button>

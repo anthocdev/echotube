@@ -10,6 +10,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Player from "../containers/Player";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 //Custom styles
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar(isAuth) {
+export default function MainAppBar({ isAuth, responseGoogle, logoutSuccess }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -62,7 +63,7 @@ export default function PrimarySearchAppBar(isAuth) {
   const menuId = "primary-account-menu";
 
   //Rendering different components based on user authentication state
-  const userAuthRender = isAuth ? (
+  const userAuthRender = (
     <div className={classes.sectionDesktop}>
       <IconButton
         edge="end"
@@ -75,17 +76,10 @@ export default function PrimarySearchAppBar(isAuth) {
         <AccountCircle />
       </IconButton>
     </div>
-  ) : (
-    <div>
-      <Button variant="contained" component={Link} to="/auth">
-        {" "}
-        Sign In{" "}
-      </Button>
-    </div>
   );
 
   //Rendering account option menu
-  const renderMenu = (
+  const renderMenu = isAuth ? (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -98,7 +92,47 @@ export default function PrimarySearchAppBar(isAuth) {
       <MenuItem component={Link} to="/user" onClick={handleMenuClose}>
         My Profile
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+      <GoogleLogout
+        render={(renderProps) => (
+          <MenuItem
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+          >
+            Sign Out
+          </MenuItem>
+        )}
+        clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
+        buttonText="Logout"
+        onLogoutSuccess={logoutSuccess}
+      />
+    </Menu>
+  ) : (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem component={Link} to="/user" onClick={handleMenuClose}>
+        <GoogleLogin
+          clientId="253538920754-1qb2i7mgbmk0s2p7dhu1bg3g7hncpep1.apps.googleusercontent.com"
+          render={(renderProps) => (
+            <MenuItem
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+            >
+              Sign In
+            </MenuItem>
+          )}
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={"single_host_origin"}
+        />
+      </MenuItem>
     </Menu>
   );
 
