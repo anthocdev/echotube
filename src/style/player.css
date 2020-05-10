@@ -1,80 +1,51 @@
-.Main {
-  margin: auto;
-  text-align: center;
-  overflow: auto;
+.main {
+  background: black;
+  height: 95vh;
 }
 
-.playerMain {
-  width: 100%;
-  height: 100%;
-  z-index: 1600;
-  margin: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(136, 6, 187, 0.356);
-}
-
-.PlayerButton {
-  z-index: 2000;
-  position: fixed;
-  margin-left: -62px;
-  margin-top: 10px;
-}
-.left-container {
-  background-color: rgba(136, 6, 187, 0);
-  float: left;
-  width: 50%;
-  transform: translate(10%, 20%);
-}
-
-.right-container {
-  background-color: rgba(148, 10, 148, 0.521);
-  float: right;
-  width: 25%;
-  height: 100%;
-  overflow: scroll;
-}
-
-.videoPlayer {
-  float: left;
-  width: 50%;
-  top: 50%;
-  left: 50%;
+.player-container {
   position: absolute;
-  transform: translate(-70%, -50%);
-  background: purple;
+  left: 9vw;
+  top: 20vh;
+  float: left;
 }
 
-.playlistColumn {
-  border-style: solid;
-  border-color: rgba(128, 11, 83, 0.445);
+.queue-container {
+  width: 40%;
+  float: right;
+  overflow-y: scroll;
+  height: 95vh;
+  background-color: white;
 }
 
-.videoCard {
-  color: rgba(128, 11, 83, 0.1);
-  font-weight: 30px;
+.videoItems {
+  margin-bottom: 20px;
 }
 
-.videoCard:hover {
-  color: rgba(128, 11, 83, 0.959);
-  cursor: pointer;
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgba(224, 21, 224, 0.9) rgb(0, 1, 2);
 }
 
-.VideoName {
-  font-size: large;
-  font-weight: 1px;
-  color: rgb(255, 217, 0);
-  background: black;
-  font-style: oblique;
-}
+@keyframes novidsanim {
+  0% {
+    color: rgba(224, 21, 224, 0.9);
+    font-size: 30px;
+  }
+  50% {
+    color: rgba(15, 1, 15, 0.9);
 
-.ChannelName {
-  font-size: large;
-  font-weight: 1px;
-  color: rgb(255, 217, 0);
-  background: black;
-  font-style: oblique;
+    font-size: 60px;
+  }
+  100% {
+    color: rgba(224, 21, 224, 0.9);
+    font-size: 30px;
+  }
+}
+.novideos {
+  text-align: center;
+  font-size: 50px;
+  animation-name: novidsanim;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 }

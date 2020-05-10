@@ -39,7 +39,11 @@ export default function FullScreen(props) {
   const { video } = props;
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        variant="contained"
+        style={{ backgroundColor: "white" }}
+        onClick={handleClickOpen}
+      >
         Display Meta-Data
       </Button>
       <Dialog

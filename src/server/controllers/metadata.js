@@ -52,12 +52,15 @@ module.exports = {
       )
         .then(function (arrayOfValuesOrErrors) {
           console.log(arrayOfValuesOrErrors);
+          res.sendStatus(200);
         })
         .catch(function (err) {
           console.log(err.message);
+          res.sendStatus(200);
         });
     } catch (err) {
       console.log("Metadata POST error: ", err);
+      res.status(404).send(err);
     }
   },
 };

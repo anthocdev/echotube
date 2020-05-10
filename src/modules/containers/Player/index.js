@@ -93,8 +93,7 @@ export default function FullScreen(props) {
         <CustomDialogTitle onClose={handleClose}>
           EchoTube Playback
         </CustomDialogTitle>
-
-        <Player />
+        <Player closeWindow={handleClose} />
       </Dialog>
     </div>
   );

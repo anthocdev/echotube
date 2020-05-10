@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import MetaDataInfo from "../MetaDataInfo/FullScreen";
 import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
+import "../../../style/videocard.css";
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   root: {
@@ -42,37 +43,31 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     position: "absolute",
     "&:after": {
       content: "",
-      position: "fixed",
       top: 0,
       left: 0,
       borderRadius: spacing(0), // 16
-      opacity: 0.5,
+      opacity: 0.9,
     },
   },
   content: {
-    background: "rgba(153, 50, 204, 0.1)",
-    width: 400,
-    height: 300,
     padding: 10,
-    borderRadius: spacing(2),
-    position: "fixed",
+    zIndex: 1,
   },
   cta: {
     marginTop: 24,
     textTransform: "initial",
   },
   button: {
-    marginTop: 230,
+    margin: "5px",
     color: "#FF1111",
     background: "#FFFFFF",
-    "&:hover": {
-      background: "#111111",
-    },
   },
   title: {
-    background: "rgba(153,50,204,0.9)",
-    fontSize: 20,
+    background: "rgba(153,50,204,0.7)",
+    fontSize: 14,
     color: "#FFFFFF",
+    borderRadius: "20px",
+    padding: "5px",
   },
 }));
 
@@ -88,24 +83,25 @@ export default function VideoCard({ video, dispatch, delDispatch }) {
         image={`https://i.ytimg.com/vi/${video.VideoLink}/maxresdefault.jpg`}
       />
       <CardContent className={styles.content}>
-        {/* <TextInfoContent
-          classes={contentStyles}
-          overline={video.ChannelName}
-          heading={video.Name}
-        /> */}
-        <Typography component="h5" variant="h5" className={styles.title}>
-          {video.Name}
-        </Typography>
-        {/* <DeezerDialog video={video} /> */}
-        <MetaDataInfo video={video} />
+        <Typography className={styles.title}>{video.Name}</Typography>
       </CardContent>
-      <Button onClick={() => delDispatch(video.playlistvideo)}>
-        Delete Video
-      </Button>
+      <div className="btnStack">
+        <Button
+          onClick={() => delDispatch(video.playlistvideo)}
+          className={styles.button}
+        >
+          Delete Video
+        </Button>
 
-      <Button onClick={() => dispatch(video)} className={styles.button}>
-        Add To Queue
-      </Button>
+        <Button
+          onClick={() => dispatch(video)}
+          className={styles.button}
+          style={{ color: "black" }}
+        >
+          Add To Queue
+        </Button>
+        <MetaDataInfo video={video} />
+      </div>
     </Card>
   );
 }

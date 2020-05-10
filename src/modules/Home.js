@@ -1,9 +1,8 @@
 import React from "react";
-import VideoForm from "./containers/Forms/VideoImportWizard/VideoForm";
-import { Typography, Button } from "@material-ui/core";
-import { Container } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import "../style/home.css";
 import backgroundImage from "../content/djbg.jpg";
+import { Button } from "@material-ui/core";
 /* Home page place holder - Currently one of the routes for testing */
 
 const styles = (theme) => ({
@@ -39,9 +38,18 @@ class HomePage extends React.Component {
                 Here to provide you with reliable playlist management, because
                 YouTube will not. Click below to get introduced!
               </p>
-              <button class="btn btn-outline-secondary btn-lg">
+              <Button
+                component={Link}
+                to="/test"
+                variant="contained"
+                color="primary"
+                style={{
+                  backgroundColor: "rgba(153, 50, 204, 0.6)",
+                  color: "white",
+                }}
+              >
                 Guide Page
-              </button>{" "}
+              </Button>
             </h1>
           </div>
           {/* Small box for introduction */}

@@ -1,0 +1,12 @@
+.btnStack {
+  background-color: rgba(153, 50, 204, 0.4);
+  color: aliceblue;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  padding: 10px;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  bottom: 17px;
+}

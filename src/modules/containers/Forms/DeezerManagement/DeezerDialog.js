@@ -63,7 +63,7 @@ export default function DeezerDialog(props) {
           Deezer Search
         </CustomDialogTitle>
         <DialogContent>
-          <DeezerDisplay video={props.video} />
+          <DeezerDisplay video={props.video} close={handleClose} />
         </DialogContent>
       </Dialog>
     </div>

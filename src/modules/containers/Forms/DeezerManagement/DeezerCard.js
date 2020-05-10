@@ -35,9 +35,12 @@ export default function DeezerCard({ dObj, dispatch, PlaylistVideoID }) {
   return (
     <Card className={classes.root}>
       <div className={classes.details}>
-        <Button onClick={() => dispatch(PlaylistVideoID, dObj)}>
-          {" "}
-          Dispatch
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => dispatch(PlaylistVideoID, dObj)}
+        >
+          Store as Metadata
         </Button>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">

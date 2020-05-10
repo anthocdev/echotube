@@ -4,7 +4,8 @@ import CardColumns from "react-bootstrap/Card";
 import * as PlayerActions from "../../../actions/PlayerActions";
 import YoutubePlayer from "./YoutubePlayer";
 import { connect } from "react-redux";
-import { Button } from "@material-ui/core";
+import "../../../style/player.css";
+import { Link } from "react-router-dom";
 
 /* Player overlay with YouTube iframe and custom video listing column */
 
@@ -16,10 +17,6 @@ class Player extends React.PureComponent {
   state = {
     currentlyPlaying: null,
     playIndex: null,
-  };
-
-  removeFromQueue = (index) => {
-    this.props.RemovePlaybackItem(index);
   };
 
   selectVideo = (index, videoLink) => {
@@ -41,34 +38,37 @@ class Player extends React.PureComponent {
 
   render() {
     const mapVideos = (
-      <div>
+      <div className="videoItems">
         {this.props.player.PlaybackQueue.map((data, i) => (
-          <CardColumns className="videoColumns">
-            <VideoItem
-              video={data}
-              key={i}
-              index={i}
-              selectedVideo={this.selectVideo}
-            />
-            <Button onClick={() => this.removeFromQueue(i)}>Remove</Button>
-          </CardColumns>
+          <VideoItem
+            video={data}
+            key={i}
+            index={i}
+            selectedVideo={this.selectVideo}
+            dispatchRemove={this.props.RemovePlaybackItem}
+          />
         ))}
       </div>
     ); //Generate video list by mapping data from playbackItems state
 
     const playerContainer = (
-      <div className="playerMain">
-        <div className="left-container">
+      <div className="main">
+        <div className="player-container">
           <YoutubePlayer videoId={this.UpdatePlayback()} />
         </div>
-        <div className="right-container">
-          <div className="playlistColumn">
-            {this.props.player.PlaybackQueue.length > 0 ? (
-              mapVideos
-            ) : (
-              <div>No videos available</div>
-            )}
-          </div>
+        <div className="queue-container">
+          {this.props.player.PlaybackQueue.length > 0 ? (
+            mapVideos
+          ) : (
+            <Link to="/user">
+              <div
+                className="novideos"
+                onClick={() => this.props.closeWindow()}
+              >
+                No videos in queue, go add some!
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     );

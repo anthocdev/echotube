@@ -35,7 +35,7 @@
   line-height: 1.5;
   padding-top: 20px;
 }
-.homebox button {
+.guideButton {
   border: 1px solid rgba(153, 50, 204);
   background: rgba(153, 50, 204, 0.6);
   color: #fff;

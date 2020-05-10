@@ -34,15 +34,17 @@ export const addMetadata = (PlaylistVideoID, data) => {
   return async (dispatch) => {
     try {
       console.log(PlaylistVideoID, data);
-      const res = await axios.post("http://localhost:3001/api/metadata", {
-        params: {
-          PlaylistVideoID,
-          data,
-        },
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      const res = await axios
+        .post("http://localhost:3001/api/metadata", {
+          params: {
+            PlaylistVideoID,
+            data,
+          },
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then(() => dispatch(getMetadata(PlaylistVideoID)));
       dispatch({
         type: ADD_METADATA,
         payload: res.data,

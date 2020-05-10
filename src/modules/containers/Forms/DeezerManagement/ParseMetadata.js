@@ -8,8 +8,18 @@ import { addMetadata } from "../../../../actions/MetaDataActions";
 
 /* Page for displaying playlists of signed in user */
 class DeezerParser extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.storeAndClose = this.storeAndClose.bind(this);
+  }
   componentDidMount() {
     this.props.getDeezerByName(this.props.video.Name);
+  }
+
+  storeAndClose(PlaylistVideoID, dObj) {
+    this.props.addMetadata(PlaylistVideoID, dObj);
+    this.props.close();
   }
 
   renderDeez(data) {
@@ -20,7 +30,7 @@ class DeezerParser extends React.Component {
             dObj={value}
             PlaylistVideoID={this.props.video.playlistvideo.PlaylistVideoID}
             key={idx}
-            dispatch={this.props.addMetadata}
+            dispatch={this.storeAndClose}
           />
         </Grid>
       </div>
@@ -37,8 +47,7 @@ class DeezerParser extends React.Component {
     return (
       <div>
         <h1> Deezer Listings </h1>
-        <h2> </h2>
-        <code>{this.props.deezer.Songs.total}</code>
+        <h3>Found a total of: {this.props.deezer.Songs.total} songs</h3>
         {this.renderDeez(this.props.deezer.Songs.data)}
       </div>
     );
