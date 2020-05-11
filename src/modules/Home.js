@@ -40,7 +40,7 @@ class HomePage extends React.Component {
               </p>
               <Button
                 component={Link}
-                to="/test"
+                to="/guide"
                 variant="contained"
                 color="primary"
                 style={{

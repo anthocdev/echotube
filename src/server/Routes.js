@@ -7,6 +7,7 @@ const VideoController = require("./controllers/videos");
 const YouTubeController = require("./controllers/youtube");
 const DeezerController = require("./controllers/deezer");
 const MetadataController = require("./controllers/metadata");
+const MailerController = require("./controllers/mailer");
 const passport = require("passport");
 const passportConf = require("./passport");
 const PassportGoogle = passport.authenticate("googleToken", { session: false });
@@ -51,6 +52,10 @@ router.route("/video").post(passportJWT, VideoController.addVideo);
 router.route("/video").delete(passportJWT, VideoController.removeVideo);
 router.route("/video").get(VideoController.getVideos);
 /* Video Routes End*/
+
+/*Mailer Routes*/
+router.route("/sendmail").post(MailerController.sendMail);
+/*Mailer Routes End*/
 
 /* YouTube API Call Routes */
 router.route("/getVideo").get(passportJWT, YouTubeController.getVideo);

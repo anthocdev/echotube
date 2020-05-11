@@ -72,9 +72,32 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
 }));
 
 /* Video card display function for video objects */
-export default function VideoCard({ video, dispatch, delDispatch }) {
+export default function VideoCard({ video, dispatch, delDispatch, isGuide }) {
   const styles = useStyles();
   const shadowStyles = useOverShadowStyles();
+
+  if (isGuide) {
+    return (
+      <Card className={clsx(styles.root, shadowStyles.root)}>
+        <CardMedia
+          className={styles.media}
+          image={`https://i.ytimg.com/vi/${video.VideoLink}/maxresdefault.jpg`}
+        />
+        <CardContent className={styles.content}>
+          <Typography className={styles.title}>{video.Name}</Typography>
+        </CardContent>
+        <div className="btnStack">
+          <Button
+            onClick={() => dispatch(video)}
+            className={styles.button}
+            style={{ color: "black" }}
+          >
+            Add To Queue
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className={clsx(styles.root, shadowStyles.root)}>
