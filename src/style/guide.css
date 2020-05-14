@@ -1,0 +1,68 @@
+.guidePage {
+  z-index: 10;
+  background-color: rgba(158, 22, 170, 0.1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.guideContent {
+  color: white;
+  background-color: rgba(61, 58, 58, 0.658);
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+@keyframes attention {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(30%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.arrow_box {
+  z-index: 100;
+  position: relative;
+  background: rgba(153, 50, 204, 0.6);
+  border: 4px solid #1c1b1b;
+  width: 250px;
+  margin: 0 auto;
+  margin-top: 30px;
+  animation-name: attention;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.arrow_box:after,
+.arrow_box:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(128, 56, 134, 0);
+  border-bottom-color: rgba(153, 50, 204, 0.6);
+  border-width: 30px;
+  margin-left: -30px;
+}
+.arrow_box:before {
+  border-color: rgba(245, 194, 241, 0);
+  border-bottom-color: #1c1b1b;
+  border-width: 36px;
+  margin-left: -36px;
+}

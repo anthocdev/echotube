@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../style/home.css";
 import backgroundImage from "../content/djbg.jpg";
 import { Button } from "@material-ui/core";
+import { ReactComponent as Logo } from "../content/echotubelogo.svg";
 /* Home page place holder - Currently one of the routes for testing */
 
 const styles = (theme) => ({
@@ -28,6 +29,13 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="overlay">
+        <div className="LogoContainer">
+          <Logo className="Logo" />
+          <div className="subLogo">
+            Archive your songs, because YouTube will not.
+          </div>
+        </div>
+
         <div class="container">
           {/* Small box for introduction */}
           <div class="homebox">
@@ -35,8 +43,9 @@ class HomePage extends React.Component {
               {" "}
               Welcome to EchoTube
               <p>
-                Here to provide you with reliable playlist management, because
-                YouTube will not. Click below to get introduced!
+                You've reached an alternative environment to enjoy and archive
+                your favorite songs from YouTube. Click the button below to get
+                introduced!
               </p>
               <Button
                 component={Link}

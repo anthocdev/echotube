@@ -289,7 +289,11 @@ export default function Terms() {
     <div>
       <Button
         variant="contained"
-        style={{ backgroundColor: "white" }}
+        style={{
+          backgroundColor: "rgba(196, 98, 235, 0.9)",
+          fontWeight: "bold",
+          color: "white",
+        }}
         onClick={handleClickOpen}
       >
         Terms of Service

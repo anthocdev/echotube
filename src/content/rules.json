@@ -1,17 +1,20 @@
 {
+  "0": {
+    "Rule": "We expect you to follow our Terms Of Service. Button above will lead you to it."
+  },
   "1": {
-    "Rule": "Don't use our application in any way that may go against YouTube, Google or Deezer Terms of Service."
+    "Rule": "Don't use our application in any way that may violate YouTube, Google or Deezer Terms of Service."
   },
   "2": {
     "Rule": "Don't use 3rd party applications to send API requests, this might end your quota and block future requests."
   },
   "3": {
-    "Rule": "Explicit, illegal or offensive images used on playlists may result in the termination of your account."
+    "Rule": "Use of racist or generally offensive language in playlist names is forbidden."
   },
   "4": {
-    "Rule": "Misuse of our contact form may result in termination of your account."
+    "Rule": "Explicit, illegal or offensive image use on playlists is forbidden."
   },
   "5": {
-    "Rule": "We expect you to follow our terms or service."
+    "Rule": "Misuse of our contact form may result in termination of your account."
   }
 }

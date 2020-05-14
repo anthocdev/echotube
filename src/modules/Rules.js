@@ -11,8 +11,8 @@ class RulesPage extends React.Component {
   render() {
     const RuleDisplay = Object.keys(RulesList).map((rule) => {
       return (
-        <ListItem>
-          <ListItemText style={{ color: "white" }}>
+        <ListItem divider={true}>
+          <ListItemText style={{ color: "white", textAlign: "center" }}>
             {RulesList[rule].Rule}
           </ListItemText>
         </ListItem>
@@ -20,9 +20,11 @@ class RulesPage extends React.Component {
     });
 
     return (
-      <div>
-        <Terms />
-        {RuleDisplay}
+      <div className="rulePage">
+        <div className="ruleContent">
+          <Terms />
+          <List>{RuleDisplay}</List>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,46 @@
+.contact {
+  z-index: 10;
+  background-color: rgba(158, 22, 170, 0.1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.contactForm {
+  color: white;
+  background-color: rgba(61, 58, 58, 0.658);
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 50vw;
+}
+
+@keyframes attention {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.errorMessage {
+  color: #fff;
+  font-size: 20px;
+  font-family: "ubuntu";
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: "Josefin Sans", sans-serif;
+  background: linear-gradient(to right, #f81de6 10%, #fff 50%, #df0b8e 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: attention 1.5s linear infinite;
+  display: inline-block;
+}

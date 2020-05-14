@@ -98,8 +98,8 @@ class ContactPage extends React.Component {
   render() {
     return (
       <div className="contact">
-        <a>Contact Page Placeholder</a>
         <form
+          className="contactForm"
           id="contactForm"
           onSubmit={this.handleSubmit.bind(this)}
           method="POST"
@@ -116,7 +116,7 @@ class ContactPage extends React.Component {
             <div className="errorMessage">{this.state.nameError}</div>
           </div>
           <div className="formItem">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+            <label htmlFor="exampleInputEmail1">Email address: </label> <br />
             <input
               type="email"
               name="email"
@@ -125,6 +125,7 @@ class ContactPage extends React.Component {
               onChange={this.onChange.bind(this)}
               value={this.state.email}
             />
+            <br />
             <div className="errorMessage">{this.state.emailError}</div>
           </div>
           <div className="formItem">
@@ -138,7 +139,15 @@ class ContactPage extends React.Component {
             ></textarea>
             <div className="errorMessage">{this.state.messageError}</div>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            style={{
+              marginTop: "20px",
+              backgroundColor: "purple",
+              borderColor: "purple",
+            }}
+          >
             Submit
           </button>
         </form>

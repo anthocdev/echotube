@@ -1,7 +1,7 @@
 const Sequalize = require("sequelize");
 const seqlInstance = require("../../database/connection");
 
-/* Playlist Table schema */
+/* Playlist Video Table schema */
 module.exports = seqlInstance.define(
   "playlistvideo",
   {
