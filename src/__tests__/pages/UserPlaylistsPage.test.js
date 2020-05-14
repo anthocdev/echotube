@@ -1,18 +1,18 @@
-import ImportWizard from "../../../modules/containers/Forms/VideoImportWizard/ModalWindow";
 import React from "react";
+import UserPlaylistsPage from "../../modules/UserPlaylistsPage";
 import { Provider } from "react-redux";
-import store from "../../../store/store";
+import store from "../../store/store";
 import { create, act } from "react-test-renderer";
 import { BrowserRouter } from "react-router-dom";
 
-describe("Import Wizard Module Test", () => {
+describe("User Playlists Page Tests", () => {
   let root;
 
   it("Renders Without Crashing", async () => {
     act(() => {
       root = create(
         <Provider store={store}>
-          <ImportWizard playlistId={1} />
+          <UserPlaylistsPage />
         </Provider>
       );
     });
@@ -23,7 +23,7 @@ describe("Import Wizard Module Test", () => {
       root = create(
         <BrowserRouter>
           <Provider store={store}>
-            <ImportWizard playlistId={1} />
+            <UserPlaylistsPage />
           </Provider>
         </BrowserRouter>
       );

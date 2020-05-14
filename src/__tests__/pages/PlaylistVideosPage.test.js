@@ -1,18 +1,37 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import UserPlaylistsPage from "../../modules/UserPlaylistsPage";
 import { Provider } from "react-redux";
 import store from "../../store/store";
+import { create, act } from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
+import PlaylistVideosPage from "../../modules/PlaylistVideosPage";
 
-describe("User Playlist Page Tests", () => {
-  it("Renders successfuly", () => {
-    const div = document.createElement("div");
+/* Playlist Listing tested with specific params id 1 */
 
-    ReactDOM.render(
-      <Provider store={store}>
-        <UserPlaylistsPage />
-      </Provider>,
-      div
-    );
+describe("Playlist Videos Listing Page", () => {
+  let root;
+
+  it("Renders Without Crashing", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <PlaylistVideosPage match={{ params: { _id: 1 } }} />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+  });
+
+  test("Renders Matches Snapshot", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <PlaylistVideosPage match={{ params: { _id: 1 } }} />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+    expect(root).toMatchSnapshot();
   });
 });

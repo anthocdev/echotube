@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Module Tests Renders Matches Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "rgba(153, 50, 204, 0.6)",
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+    }
+  }
+>
+  <p
+    className="MuiTypography-root MuiTypography-body2 MuiTypography-alignCenter"
+    style={
+      Object {
+        "color": "#ffffff",
+      }
+    }
+  >
+    Copyright © 
+    <a
+      className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit"
+      href="http://cerneckis.com/"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      Antanas Cerneckis 
+      <br />
+    </a>
+    2020
+    .
+  </p>
+</div>
+`;

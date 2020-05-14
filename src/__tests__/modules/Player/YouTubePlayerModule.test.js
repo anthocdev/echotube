@@ -1,20 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import YoutubePlayer from "../../../modules/containers/Player/YoutubePlayer";
+
+import React from "react";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-
-/* @todo: set up basic video object for use in test */
+import { create, act } from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
 describe("YouTube Player Module Testing", () => {
-  it("Renders Successfully", () => {
-    const div = document.createElement("div");
+  let root;
 
-    ReactDOM.render(
-      <Provider store={store}>
-        <YoutubePlayer />
-      </Provider>,
-      div
-    );
+  it("Renders Without Crashing", async () => {
+    act(() => {
+      root = create(
+        <Provider store={store}>
+          <YoutubePlayer />
+        </Provider>
+      );
+    });
+  });
+
+  test("Renders Matches Snapshot", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <YoutubePlayer />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+    expect(root).toMatchSnapshot();
+    console.log(root.toJSON());
   });
 });

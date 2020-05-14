@@ -7,7 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import MetaDataInfo from "../MetaDataInfo/FullScreen";
-import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
 import "../../../style/videocard.css";
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
@@ -74,11 +73,10 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
 /* Video card display function for video objects */
 export default function VideoCard({ video, dispatch, delDispatch, isGuide }) {
   const styles = useStyles();
-  const shadowStyles = useOverShadowStyles();
 
   if (isGuide) {
     return (
-      <Card className={clsx(styles.root, shadowStyles.root)}>
+      <Card className={clsx(styles.root)}>
         <CardMedia
           className={styles.media}
           image={`https://i.ytimg.com/vi/${video.VideoLink}/maxresdefault.jpg`}
@@ -100,7 +98,7 @@ export default function VideoCard({ video, dispatch, delDispatch, isGuide }) {
   }
 
   return (
-    <Card className={clsx(styles.root, shadowStyles.root)}>
+    <Card className={clsx(styles.root)}>
       <CardMedia
         className={styles.media}
         image={`https://i.ytimg.com/vi/${video.VideoLink}/maxresdefault.jpg`}

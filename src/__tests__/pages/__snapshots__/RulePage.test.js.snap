@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rules Page Renders Matches Snapshot 1`] = `
+<div
+  className="rulePage"
+>
+  <div
+    className="ruleContent"
+  >
+    <div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "backgroundColor": "rgba(196, 98, 235, 0.9)",
+            "color": "white",
+            "fontWeight": "bold",
+          }
+        }
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Terms of Service
+        </span>
+        <span
+          className="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <ul
+      className="MuiList-root MuiList-padding"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters MuiListItem-divider"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root"
+          style={
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            We expect you to follow our Terms Of Service. Button above will lead you to it.
+          </span>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters MuiListItem-divider"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root"
+          style={
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Don't use our application in any way that may violate YouTube, Google or Deezer Terms of Service.
+          </span>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters MuiListItem-divider"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root"
+          style={
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Don't use 3rd party applications to send API requests, this might end your quota and block future requests.
+          </span>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters MuiListItem-divider"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root"
+          style={
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Use of racist or generally offensive language in playlist names is forbidden.
+          </span>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters MuiListItem-divider"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root"
+          style={
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Explicit, illegal or offensive image use on playlists is forbidden.
+          </span>
+        </div>
+      </li>
+      <li
+        className="MuiListItem-root MuiListItem-gutters MuiListItem-divider"
+        disabled={false}
+      >
+        <div
+          className="MuiListItemText-root"
+          style={
+            Object {
+              "color": "white",
+              "textAlign": "center",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Misuse of our contact form may result in termination of your account.
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

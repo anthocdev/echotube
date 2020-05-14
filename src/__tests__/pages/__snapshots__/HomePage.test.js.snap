@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page Tests Renders Matches Snapshot 1`] = `
+<div
+  className="overlay"
+>
+  <div
+    className="LogoContainer"
+  >
+    <svg
+      className="Logo"
+    >
+      echotubelogo.svg
+    </svg>
+    <div
+      className="subLogo"
+    >
+      Archive your songs, because YouTube will not.
+    </div>
+  </div>
+  <div
+    class="container"
+  >
+    <div
+      class="homebox"
+    >
+      <h1>
+         
+        Welcome to EchoTube
+        <p>
+          You've reached an alternative environment to enjoy and archive your favorite songs from YouTube. Click the button below to get introduced!
+        </p>
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          href="/guide"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          style={
+            Object {
+              "backgroundColor": "rgba(153, 50, 204, 0.6)",
+              "color": "white",
+            }
+          }
+          tabIndex={0}
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Guide Page
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </a>
+      </h1>
+    </div>
+  </div>
+</div>
+`;

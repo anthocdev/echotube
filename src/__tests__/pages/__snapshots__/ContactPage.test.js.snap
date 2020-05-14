@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact Page Tests Renders Matches Snapshot 1`] = `
+<div
+  className="contact"
+>
+  <form
+    className="contactForm"
+    id="contactForm"
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <div
+      className="formItem"
+    >
+      <label
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <input
+        className="form-control"
+        name="name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className="errorMessage"
+      >
+        
+      </div>
+    </div>
+    <div
+      className="formItem"
+    >
+      <label
+        htmlFor="exampleInputEmail1"
+      >
+        Email address: 
+      </label>
+       
+      <br />
+      <input
+        aria-describedby="emailHelp"
+        className="formItem"
+        name="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+      <br />
+      <div
+        className="errorMessage"
+      >
+        
+      </div>
+    </div>
+    <div
+      className="formItem"
+    >
+      <label
+        htmlFor="message"
+      >
+        Message
+      </label>
+      <textarea
+        className="form-control"
+        name="message"
+        onChange={[Function]}
+        rows="6"
+        value=""
+      />
+      <div
+        className="errorMessage"
+      >
+        
+      </div>
+    </div>
+    <button
+      className="btn btn-primary"
+      style={
+        Object {
+          "backgroundColor": "purple",
+          "borderColor": "purple",
+          "marginTop": "20px",
+        }
+      }
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

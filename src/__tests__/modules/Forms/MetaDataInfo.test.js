@@ -1,5 +1,5 @@
-import VideoItem from "../../../modules/containers/Player/VideoItem";
 import React from "react";
+import MetaDataInfo from "../../../modules/containers/MetaDataInfo/MetaDataInfo";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
 import { create, act } from "react-test-renderer";
@@ -14,16 +14,20 @@ const data = {
   ChannelName: "Illumi Music",
   ChannelID: "UCXarSAuECvnQFBb1vMcMsjQ",
   VideoLink: "DZjpDfgXNe0",
+  playlistvideo: { PlaylistVideoID: 1 },
 };
 
-describe("Individual Video Item Module Testing", () => {
+//Mock function to avoid undefined functions
+const handleClickOpenMock = () => {};
+
+describe("Metadata Information Module Testing", () => {
   let root;
 
   it("Renders Without Crashing", async () => {
     act(() => {
       root = create(
         <Provider store={store}>
-          <VideoItem video={data} key={1} index={1} selectedVideo={null} />
+          <MetaDataInfo video={data} onOpen={handleClickOpenMock} />
         </Provider>
       );
     });
@@ -34,7 +38,7 @@ describe("Individual Video Item Module Testing", () => {
       root = create(
         <BrowserRouter>
           <Provider store={store}>
-            <VideoItem video={data} key={1} index={1} selectedVideo={null} />
+            <MetaDataInfo video={data} onOpen={handleClickOpenMock} />
           </Provider>
         </BrowserRouter>
       );

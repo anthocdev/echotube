@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import VideoCard from "../../../modules/containers/YouTube/YoutubeVideoCard";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
-
+import { create, act } from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
+import VideoCard from "../../../modules/containers/YouTube/YoutubeVideoCard";
 /* Example YouTube Video Object for Testing */
 const data = {
   kind: "youtube#video",
@@ -89,15 +89,30 @@ const data = {
   },
 };
 
-describe("Individual Youtube Item Module Testing", () => {
-  it("Renders Successfully", () => {
-    const div = document.createElement("div");
+describe("YouTube VideoCard module testing", () => {
+  let root;
 
-    ReactDOM.render(
-      <Provider store={store}>
-        <VideoCard youtubeVideo={data} />
-      </Provider>,
-      div
-    );
+  it("Renders Without Crashing", async () => {
+    act(() => {
+      root = create(
+        <Provider store={store}>
+          <VideoCard youtubeVideo={data} />
+        </Provider>
+      );
+    });
+  });
+
+  test("Renders Matches Snapshot", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <VideoCard youtubeVideo={data} />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+    expect(root).toMatchSnapshot();
+    console.log(root.toJSON());
   });
 });

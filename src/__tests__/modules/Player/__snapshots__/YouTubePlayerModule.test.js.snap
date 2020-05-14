@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YouTube Player Module Testing Renders Matches Snapshot 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <div
+      className={null}
+      id={null}
+    />
+  </div>
+</div>
+`;

@@ -1,23 +1,35 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import HomePage from "../../modules/Home";
 import { Provider } from "react-redux";
 import store from "../../store/store";
+import { create, act } from "react-test-renderer";
 import { BrowserRouter } from "react-router-dom";
 
 describe("Home Page Tests", () => {
-  beforeEach(() => {});
+  let root;
 
-  it("Renders successfuly", () => {
-    const div = document.createElement("div");
+  it("Renders Without Crashing", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <HomePage />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+  });
 
-    ReactDOM.render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <HomePage />
-        </Provider>
-      </BrowserRouter>,
-      div
-    );
+  test("Renders Matches Snapshot", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <HomePage />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+    expect(root).toMatchSnapshot();
   });
 });

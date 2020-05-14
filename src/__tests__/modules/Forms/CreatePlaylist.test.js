@@ -1,18 +1,34 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import CreatePlaylist from "../../../modules/containers/Forms/PlaylistManagement/CreatePlaylist";
 import { Provider } from "react-redux";
 import store from "../../../store/store";
+import { create, act } from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-describe("Create Playlist Module Testing", () => {
-  it("Renders successfuly", () => {
-    const div = document.createElement("div");
+describe("Playlist Creation Module Test", () => {
+  let root;
 
-    ReactDOM.render(
-      <Provider store={store}>
-        <CreatePlaylist />
-      </Provider>,
-      div
-    );
+  it("Renders Without Crashing", async () => {
+    act(() => {
+      root = create(
+        <Provider store={store}>
+          <CreatePlaylist />
+        </Provider>
+      );
+    });
+  });
+
+  test("Renders Matches Snapshot", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <CreatePlaylist />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+    expect(root).toMatchSnapshot();
+    console.log(root.toJSON());
   });
 });

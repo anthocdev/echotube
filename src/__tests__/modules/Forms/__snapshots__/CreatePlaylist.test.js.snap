@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlist Creation Module Test Renders Matches Snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <label>
+    Playlist Name:
+    <input
+      name="PlaylistName"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </label>
+  <label>
+    Playlist Image Link:
+    <input
+      name="PlaylistImageLink"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Verify Image
+    </button>
+    <div>
+      Invalid
+    </div>
+  </label>
+  <input
+    type="submit"
+    value="Create Playlist"
+  />
+</form>
+`;

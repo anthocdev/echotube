@@ -3,16 +3,34 @@ import ReactDOM from "react-dom";
 import GuidePage from "../../modules/Guide";
 import { Provider } from "react-redux";
 import store from "../../store/store";
+import { create, act } from "react-test-renderer";
+import { BrowserRouter } from "react-router-dom";
 
-describe("Rules Page Tests", () => {
-  it("Renders successfuly", () => {
-    const div = document.createElement("div");
+describe("Guide Page Tests", () => {
+  let root;
 
-    ReactDOM.render(
-      <Provider store={store}>
-        <GuidePage />
-      </Provider>,
-      div
-    );
+  it("Renders Without Crashing", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <GuidePage />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+  });
+
+  test("Renders Matches Snapshot", async () => {
+    act(() => {
+      root = create(
+        <BrowserRouter>
+          <Provider store={store}>
+            <GuidePage />
+          </Provider>
+        </BrowserRouter>
+      );
+    });
+    expect(root).toMatchSnapshot();
   });
 });

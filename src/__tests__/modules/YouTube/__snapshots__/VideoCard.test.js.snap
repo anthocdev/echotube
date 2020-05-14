@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YouTube VideoCard module testing Renders Matches Snapshot 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="card-img-top"
+  >
+    <img
+      src="https://i.ytimg.com/vi/5n4jU80-p7M/hqdefault.jpg"
+    />
+  </div>
+  <div
+    className="content"
+  >
+    <a
+      className="nav-link"
+      href="https://www.youtube.com/watch?v=5n4jU80-p7M"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      Selected Classics Mix
+    </a>
+    <div>
+      Description: 
+      Stay Classy 🗝
+
+Tracklist: 
+0:00 Shadow Child & Doorly - Piano Weapon (Nicky Night Time Remix)
+2:03 Cloonee - Separated
+5:09 Just Kiddin - Thinking About It
+7:29 Dont Look Now ft. Tom Tyler - Feels Like (Calippo Remix)
+10:55 Croatia Squad - Touch Me (Return Of The Jaded Remix) 
+13:50 Felon - Colour 
+16:23 Bordertown - Rapture 
+21:30 Jett - Strong Look (Codec Remix) 
+24:10 XYconstant - Her Eyes 
+26:55 Ganzfeld Effect - Loving 
+28:43 Playless -Broken
+32:38 Weiss - Baby Talk To Me
+33:40 Semedo & Curtis Gabriel - Some People say
+36:58 Calvin Harris - Bounce (DEVI Deep House Remix)
+39:15 Charli XCX - Doing It (ft. Rita Ora) (Siege Remix) 
+42:48 Tim Berg - Seek Bromance (Jerome Price Remix)
+44:48 Icarus - Like I Do
+46:43 Route 94 & Secondcity - Freak
+50:25 TS7 ft. Taylor Fowlis - Heartlight
+54:05 Jazzanova ft. Ben Westbeech - I Can See (Konstantin Sibold Remix) 
+57:40 Wih'Lo - It's True (Liar's 'It's a Lie' Mix)
+
+Selected - Music on a new level.
+» Spotify: http://bit.ly/selectedspotify
+» Facebook: http://on.fb.me/22t6pEf
+» Instagram: http://bit.ly/1Z6tc9F
+
+Picture by imyourglamorouscat:
+https://www.flickr.com/photos/imyourglamorouscat/
+    </div>
+    <div>
+      Channel Name: 
+      Selected.
+    </div>
+  </div>
+</div>
+`;

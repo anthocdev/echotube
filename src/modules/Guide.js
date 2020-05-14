@@ -32,7 +32,7 @@ class GuidePage extends React.Component {
               }}
             >
               Rules
-            </Button>{" "}
+            </Button>
             <br />
             <AccountCircle style={{ fontSize: "60px" }} />
             <div className="arrow_box">
