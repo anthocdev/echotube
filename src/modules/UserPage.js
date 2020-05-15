@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import UserPlaylistPage from "./UserPlaylistsPage";
 import "../style/userpage.css";
-/* Page for displaying users stored in the server */
+/* Displays user after parsing profile info from the API. */
 class UserPage extends React.Component {
   componentDidMount() {
     this.props.getProfileInfo();
@@ -26,6 +26,9 @@ class UserPage extends React.Component {
         <div className="bluroverlay" />
       </div>
     );
+    {
+      /* On loading state */
+    }
     const Loading = (
       <div>
         <h1> Loading Profile...</h1>

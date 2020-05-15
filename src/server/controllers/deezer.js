@@ -1,5 +1,5 @@
 const axios = require("axios");
-
+//Making deezer requests, no key needed
 module.exports = {
   searchQuery: async (req, res, next) => {
     const GET_VIDEO = `https://api.deezer.com/search?q=${req.param(
@@ -8,12 +8,12 @@ module.exports = {
 
     axios
       .get(GET_VIDEO)
-      .then(response => {
+      .then((response) => {
         res.json(response.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error", err);
       });
     console.log("Deezer search request made.");
-  }
+  },
 };

@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Button, Icon } from "@material-ui/core";
 import "../style/guide.css";
-/* Guide page place holder - Currently one of the routes for testing */
+/* Guide page used to introduce the user to how the web-app works.*/
 class GuidePage extends React.Component {
   onSubmit = (data) => {
     console.log(data);
   };
   render() {
+    //If user is not authenticated
     if (!this.props.auth) {
       return (
         <div className="guidePage">
@@ -43,6 +44,7 @@ class GuidePage extends React.Component {
         </div>
       );
     }
+    //If user is authenticated
     return (
       <div className="guidePage">
         <div className="guideContent">

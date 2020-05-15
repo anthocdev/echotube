@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchPlaylist } from "../actions/YoutubeApiActions";
 import { getUserPlaylists } from "../actions/EchoApiActions";
-/* Testing class for parsing youtube playlists using Actions & Reducers */
+/* Test Parsing youtube playlists using Actions & Reducers */
 class Playlist extends React.Component {
   componentDidMount() {}
 
@@ -12,7 +12,7 @@ class Playlist extends React.Component {
       userPlaylistData,
       playlistData,
       isLogged,
-      selectedUser
+      selectedUser,
     } = this.props;
 
     if (!isLogged) {
@@ -68,20 +68,20 @@ class Playlist extends React.Component {
   }
 }
 
-const mapStateToProps = store => {
+const mapStateToProps = (store) => {
   return {
     playlistData: store.playlist.playlistData,
     userPlaylistData: store.userPlaylist.userPlaylistData,
     isLogged: store.user.loggedIn,
-    selectedUser: store.user.selectedUser
+    selectedUser: store.user.selectedUser,
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch: function(task) {
+    dispatch: function (task) {
       dispatch(task);
-    }
+    },
   };
 }
 

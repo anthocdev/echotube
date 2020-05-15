@@ -10,7 +10,9 @@ import ModalVideoForm from "./containers/Forms/VideoImportWizard/ModalWindow";
 import { Button, Divider } from "@material-ui/core";
 import "../style/playlist.css";
 
-/* Playlist video page class for displaying all videos within user playlist, with functionalities of adding items to player queue */
+/* Playlist video page class for displaying all videos within user playlist, 
+with functionalities of adding items to player queue */
+
 class PlaylistVideosPage extends React.Component {
   constructor(props) {
     super(props);
@@ -32,15 +34,21 @@ class PlaylistVideosPage extends React.Component {
     }
   }
   render() {
+    //If the playlist is empty
     if (!this.props.playlistVideosData.length) {
       return (
-        <div>
-          --No Videos--
-          <ModalVideoForm playlistId={this.props.match.params._id} />
+        <div className="playlist">
+          <div className="bluroverlay" />
+          <h1> Viewing Playlist: {this.props.playlistName}</h1>
+          <div className="novideo">
+            Playlist contains no videos. Use button below to add some.
+            <ModalVideoForm playlistId={this.props.match.params._id} />
+          </div>
         </div>
       );
     }
 
+    //If playlist is not empty
     return (
       <div className="playlist">
         <div className="bluroverlay" />
@@ -63,6 +71,7 @@ class PlaylistVideosPage extends React.Component {
             delDispatch={this.props.removePlaylistVideo}
           />
         </div>
+        {/* Video Importing form, renders the button */}
         <ModalVideoForm playlistId={this.props.match.params._id} />
       </div>
     );

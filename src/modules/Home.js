@@ -4,22 +4,7 @@ import "../style/home.css";
 import backgroundImage from "../content/djbg.jpg";
 import { Button } from "@material-ui/core";
 import { ReactComponent as Logo } from "../content/echotubelogo.svg";
-/* Home page place holder - Currently one of the routes for testing */
-
-const styles = (theme) => ({
-  background: {
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundColor: "#7fc7d9", // Average color of the background image.
-    backgroundPosition: "center",
-  },
-  h5: {
-    marginBottom: theme.spacing(4),
-    marginTop: theme.spacing(4),
-    [theme.breakpoints.up("sm")]: {
-      marginTop: theme.spacing(10),
-    },
-  },
-});
+/* Simple homepage with core purpose of welcoming the user, logo animation included. */
 
 class HomePage extends React.Component {
   onSubmit = (data) => {

@@ -6,6 +6,7 @@ import * as actions from "../actions";
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    //Binding google login and logout methods
     this.responseGoogle = this.responseGoogle.bind(this);
     this.LogoutSuccess = this.LogoutSuccess.bind(this);
   }
@@ -19,7 +20,7 @@ class Header extends React.Component {
 
   async LogoutSuccess() {
     console.log("Successfully Logged Out");
-    this.props.signOut();
+    this.props.signOut(); //User signout prop from actions
   }
 
   render() {

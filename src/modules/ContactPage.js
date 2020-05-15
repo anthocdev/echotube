@@ -1,7 +1,7 @@
 import React from "react";
 import "../style/contact.css";
 import axios from "axios";
-/* Rules page place holder - Currently one of the routes for testing */
+/* Contact Page used to contact the administrator, uses nodemailer API request. */
 class ContactPage extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class ContactPage extends React.Component {
     };
   }
 
-  //Validation for fields
+  //Validation for fields, using multiple states to store messages
   validateData = () => {
     let emailError = "";
     let nameError = "";
@@ -58,7 +58,7 @@ class ContactPage extends React.Component {
   handleSubmit = (event) => {
     console.log(event);
     event.preventDefault();
-
+    //Getting validation state
     const validData = this.validateData();
 
     if (validData) {
@@ -71,6 +71,7 @@ class ContactPage extends React.Component {
     }
   };
 
+  //Async operation which waits for response before alerting the user
   async sendToServer(sendData) {
     await axios({
       method: "POST",
@@ -116,7 +117,7 @@ class ContactPage extends React.Component {
             <div className="errorMessage">{this.state.nameError}</div>
           </div>
           <div className="formItem">
-            <label htmlFor="exampleInputEmail1">Email address: </label> <br />
+            <label htmlFor="exampleInputEmail1">Emailds address: </label> <br />
             <input
               type="email"
               name="email"

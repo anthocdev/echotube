@@ -47,15 +47,19 @@ module.exports = {
               ChannelName: data.snippet.channelTitle,
               ChannelID: data.snippet.channelId,
               VideoLink: data.id,
-            }).then((video) =>
-              PlaylistVideoModel.create({
-                playlists_PlaylistID: PlaylistID,
-                videos_VideoID: video.VideoID,
+            })
+              .then((video) =>
+                PlaylistVideoModel.create({
+                  playlists_PlaylistID: PlaylistID,
+                  videos_VideoID: video.VideoID,
+                })
+              )
+              .then(() => {
+                return res.status(200).send("Video added to playlist");
               })
-            )
           )
             .then(function (arrayOfValuesOrErrors) {
-              console.log(arrayOfValuesOrErrors);
+              return res.status(200).send("Video added to playlist");
             })
             .catch(function (err) {
               console.log(err.message);

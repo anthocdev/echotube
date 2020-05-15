@@ -11,7 +11,7 @@ import {
 import DeezerDialog from "../Forms/DeezerManagement/DeezerDialog";
 import * as MetaDataActions from "../../../actions/MetaDataActions";
 import { connect } from "react-redux";
-
+/* Displays metadata info after parsing it from the API. */
 class MetaDataInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +24,7 @@ class MetaDataInfo extends React.Component {
   render() {
     const deezerSerach = (
       <ListItem button>
+        {/*Renders button for searching metadata on deezer */}
         <DeezerDialog video={this.props.video} />
       </ListItem>
     );
@@ -57,7 +58,7 @@ class MetaDataInfo extends React.Component {
         </List>
       );
     {
-      /* Plling props only after metadata is checked to exist. */
+      /* Filling props only after metadata is checked to exist. */
     }
     const {
       deezerid,

@@ -1,5 +1,5 @@
 const mailer = require("nodemailer");
-
+//Making node mailer requests using own google mail account
 let transporter = mailer.createTransport({
   service: "gmail",
   auth: {
