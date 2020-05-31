@@ -117,7 +117,7 @@ class ContactPage extends React.Component {
             <div className="errorMessage">{this.state.nameError}</div>
           </div>
           <div className="formItem">
-            <label htmlFor="exampleInputEmail1">Emailds address: </label> <br />
+            <label htmlFor="exampleInputEmail1">Email Address: </label> <br />
             <input
               type="email"
               name="email"

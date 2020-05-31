@@ -1,15 +1,12 @@
-import loggedReducer from "./isLogged";
 import GetVideosReducer from "./GetVideos";
 import PostUserVideosReducer from "./PostUserVideos";
 import userPlaylistReducer from "./UserPlaylistReducer";
 import PlaylistVaideoReducer from "./PlaylistVideoReducer";
 import PlayerReducer from "./PlayerReducer";
-import userPlaylistVideosReducer from "./userPlaylistVideos";
 // import userPlaylistReducer from "./userPlaylists";
 import YouTubeReducer from "./YouTubeReducer";
 import DeezerReducer from "./DeezerReducer";
 import MetadataReducer from "./MetaDataReducer";
-import playerReducer from "./player";
 import authReducer from "./auth";
 import userReducer from "./parseUser";
 import { combineReducers } from "redux";

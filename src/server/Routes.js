@@ -1,6 +1,6 @@
 var express = require("express");
 const db = require("./database");
-
+/* Setting up of all API routes, optionally with or without JWT confirmation */
 const UsersController = require("./controllers/users");
 const PlaylistController = require("./controllers/playlist");
 const VideoController = require("./controllers/videos");
@@ -8,6 +8,7 @@ const YouTubeController = require("./controllers/youtube");
 const DeezerController = require("./controllers/deezer");
 const MetadataController = require("./controllers/metadata");
 const MailerController = require("./controllers/mailer");
+const testController = require("./controllers/test");
 const passport = require("passport");
 const passportConf = require("./passport");
 const PassportGoogle = passport.authenticate("googleToken", { session: false });
@@ -19,6 +20,11 @@ var router = express.Router();
 router.get("/test/", async (req, res, next) => {
   res.json("Welcome to EchoTube API, this is a test json return function.");
 });
+
+/* Test Routes */
+
+router.route("/testroute").get(testController.testMethod);
+/* Test Routes End*/
 
 /* Auth Routes Start*/
 router.route("/signup").post(UsersController.signUp);

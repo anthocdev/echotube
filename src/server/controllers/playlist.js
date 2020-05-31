@@ -1,6 +1,6 @@
 const UserModel = require("../sequelize/models/user");
 const PlaylistModel = require("../sequelize/models/playlist");
-
+/* Playlist controller, general requests for playlist management*/
 UserModel.hasMany(PlaylistModel, {
   foreignKey: "users_UserID",
 });
@@ -43,13 +43,24 @@ module.exports = {
       PlaylistModel.findOne({
         where: { PlaylistID: PlaylistID },
       }).then((value) => {
+        if (!value) {
+          res.status(404).send("Playlist not found");
+        }
         //Ensuring that user is definitely editing his own playlist
         if (value.users_UserID == UserID) {
           PlaylistModel.update(
             { Name: PlaylistName, PlaylistImageLink: PlaylistImageLink },
             { where: { PlaylistID: PlaylistID } }
-          );
-          res.sendStatus(200);
+          ).then((result) => {
+            res.status(200).send(
+              JSON.stringify({
+                message: "Successfully Updated Playlist",
+                PlaylistID: PlaylistID,
+                PlaylistName: PlaylistName,
+                PlaylistImageLink: PlaylistImageLink,
+              })
+            );
+          });
         } else {
           res.sendStatus(403); //Forbidden
         }
@@ -71,7 +82,18 @@ module.exports = {
           PlaylistID: delPlaylistID,
           users_UserID: UserID,
         },
-      }).then((response) => res.json(response));
+      }).then((val) => {
+        if (val == 0) {
+          res.status(403).json({ message: "Playlist not found" });
+        }
+        res.status(200).json({
+          message:
+            "Playlist with ID: " +
+            delPlaylistID +
+            " Successfully Deleted" +
+            val,
+        });
+      });
     } catch (err) {
       res.sendStatus(404);
     }

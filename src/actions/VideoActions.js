@@ -6,10 +6,9 @@ import {
   ADD_PLAYLIST_VIDEOS_ERROR,
   DELETE_PLAYLIST_VIDEO,
   DELETE_PLAYLIST_VIDEO_ERROR,
-  EDIT_PLAYLIST_VIDEO,
-  EDIT_PLAYLIST_VIDEOS_ERROR,
 } from "./types";
 
+/* Actions for video management in playlists */
 export const getPlaylistVideos = (PlaylistID) => {
   return async (dispatch) => {
     try {
@@ -72,7 +71,7 @@ export const addPlaylistVideo = (PlaylistID, data) => {
             "content-type": "application/json",
           },
         })
-        .then((result) => dispatch(getPlaylistVideos(PlaylistID)));
+        .then(() => dispatch(getPlaylistVideos(PlaylistID)));
       dispatch({
         type: ADD_PLAYLIST_VIDEO,
         payload: res.data,

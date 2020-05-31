@@ -79,7 +79,7 @@ export default function VideoCard({ video, dispatch, delDispatch, isGuide }) {
       <Card className={clsx(styles.root)}>
         <CardMedia
           className={styles.media}
-          image={`https://i.ytimg.com/vi/${video.VideoLink}/maxresdefault.jpg`}
+          image={`https://i.ytimg.com/vi/${video.VideoLink}/hqdefault.jpg`}
         />
         <CardContent className={styles.content}>
           <Typography className={styles.title}>{video.Name}</Typography>
@@ -101,7 +101,7 @@ export default function VideoCard({ video, dispatch, delDispatch, isGuide }) {
     <Card className={clsx(styles.root)}>
       <CardMedia
         className={styles.media}
-        image={`https://i.ytimg.com/vi/${video.VideoLink}/maxresdefault.jpg`}
+        image={`https://i.ytimg.com/vi/${video.VideoLink}/hqdefault.jpg`}
       />
       <CardContent className={styles.content}>
         <Typography className={styles.title}>{video.Name}</Typography>

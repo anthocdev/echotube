@@ -8,7 +8,7 @@ import {
   DELETE_USER_PLAYLIST,
   DELETE_USER_PLAYLIST_ERROR,
 } from "../actions/types";
-
+/* Reducer for user playlist management */
 const DEFAULT_STATE = {
   Nickname: "",
   Playlists: "",

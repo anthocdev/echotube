@@ -1,13 +1,13 @@
 const JWT = require("jsonwebtoken");
 const JWT_SECRET = require("../config");
-
-signToken = user => {
+/* Authentication and user request methods */
+signToken = (user) => {
   return JWT.sign(
     {
       iss: "Anthodev",
       sub: user,
       iat: new Date().getTime(), //Current Time
-      exp: new Date().setDate(new Date().getDate() + 1) //Current Time + 1 Day
+      exp: new Date().setDate(new Date().getDate() + 1), //Current Time + 1 Day
     },
     JWT_SECRET
   );
@@ -41,5 +41,5 @@ module.exports = {
     //Get User Details
     const userData = req.user;
     res.status(200).json({ userData });
-  }
+  },
 };

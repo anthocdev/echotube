@@ -4,7 +4,7 @@ import {
   DELETE_PLAYLIST_VIDEO,
   DELETE_PLAYLIST_VIDEO_ERROR,
 } from "../actions/types";
-
+/* Reducer for playlist videos */
 const DEFAULT_STATE = {
   PlaylistID: "",
   PlaylistName: "",

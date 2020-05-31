@@ -1,7 +1,7 @@
 const PlaylistModel = require("../sequelize/models/playlist");
 const VideoModel = require("../sequelize/models/video");
 const PlaylistVideoModel = require("../sequelize/models/playlistVideo");
-
+/* Video management requests */
 VideoModel.belongsToMany(PlaylistModel, {
   through: PlaylistVideoModel,
   foreignKey: "videos_videoID",
@@ -34,8 +34,15 @@ module.exports = {
           PlaylistVideoModel.create({
             playlists_PlaylistID: PlaylistID,
             videos_VideoID: video.VideoID,
+          }).then((pvm) => {
+            return res.status(200).send(
+              JSON.stringify({
+                message: "Video added to playlist",
+                PlaylistVideoID: pvm.PlaylistVideoID,
+                PlaylistID: PlaylistID,
+              })
+            );
           });
-          return res.status(200).send("Video added to playlist");
         } else {
           //If Video is new
           console.log("Does not exist");
@@ -54,16 +61,18 @@ module.exports = {
                   videos_VideoID: video.VideoID,
                 })
               )
-              .then(() => {
-                return res.status(200).send("Video added to playlist");
+              .then((pvm) => {
+                return res.status(200).send(
+                  JSON.stringify({
+                    message: "Video added to playlist",
+                    PlaylistVideoID: pvm.PlaylistVideoID,
+                    PlaylistID: PlaylistID,
+                  })
+                );
               })
-          )
-            .then(function (arrayOfValuesOrErrors) {
-              return res.status(200).send("Video added to playlist");
-            })
-            .catch(function (err) {
-              console.log(err.message);
-            });
+          ).catch(function (err) {
+            console.log(err.message);
+          });
         }
       });
     } catch (err) {
@@ -80,18 +89,33 @@ module.exports = {
         include: [PlaylistModel],
       }).then((data) => {
         //Security measure to ensure decoded JWT token contains matching user ID
+
+        if (!data) {
+          return res.status(403).send(
+            JSON.stringify({
+              message: "Playlist Does not Exist.",
+            })
+          );
+        }
+
         if (data.Playlist.users_UserID == UserID) {
           PlaylistVideoModel.destroy({
             where: { PlaylistVideoID: delPlaylistVideoID },
           }).then((respo) => {
             if (respo) {
-              return res.status(200).send("Video Successfully Removed");
+              return res
+                .status(200)
+                .send(
+                  JSON.stringify({ message: "Video Successfully Removed" })
+                );
             }
           });
         } else {
-          return res
-            .status(403)
-            .send("Unauthorized user trying to access resource.");
+          return res.status(403).send(
+            JSON.stringify({
+              message: "Unauthorized user trying to access resource.",
+            })
+          );
         }
       });
     } catch (e) {

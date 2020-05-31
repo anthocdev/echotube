@@ -1,5 +1,6 @@
 import { GET_DEEZER_BY_NAME, GET_DEEZER_BY_NAME_ERROR } from "../actions/types";
 
+/* Reducer for deezer requests */
 const DEFAULT_STATE = {
   Songs: [],
   errorMessage: "",

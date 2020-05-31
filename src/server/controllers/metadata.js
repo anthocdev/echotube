@@ -41,14 +41,22 @@ module.exports = {
           artist_image: data.artist.picture_medium,
           album_name: data.album.title,
           album_image: data.album.cover_medium,
-        }).then((metadata) =>
-          PlaylistVideoModel.update(
-            {
-              metadata_id: metadata.id,
-            },
-            { where: { PlaylistVideoID: PlaylistVideoID } }
+        })
+          .then((metadata) =>
+            PlaylistVideoModel.update(
+              {
+                metadata_id: metadata.id,
+              },
+              { where: { PlaylistVideoID: PlaylistVideoID } }
+            )
           )
-        )
+          .then((result) => {
+            return res.status(200).json({
+              message:
+                "Successfully set metadata of Playlist Video with ID " +
+                PlaylistVideoID,
+            });
+          })
       )
         .then(function (arrayOfValuesOrErrors) {
           console.log(arrayOfValuesOrErrors);
@@ -56,7 +64,6 @@ module.exports = {
         })
         .catch(function (err) {
           console.log(err.message);
-          res.sendStatus(200);
         });
     } catch (err) {
       console.log("Metadata POST error: ", err);

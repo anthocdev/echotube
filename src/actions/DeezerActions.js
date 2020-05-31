@@ -1,6 +1,6 @@
 import axios from "axios";
 import { GET_DEEZER_BY_NAME, GET_DEEZER_BY_NAME_ERROR } from "./types";
-
+/* Deezer Request Actions */
 export const getDeezerByName = (videoTitle) => {
   return async (dispatch) => {
     try {

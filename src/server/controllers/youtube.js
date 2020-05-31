@@ -1,6 +1,6 @@
 const axios = require("axios");
 const API_KEY = `AIzaSyB2yKogm2aT-hE-wd-AYqUXezzXcHCCKXs`;
-
+/* Making YouTube API requests, returning response to user */
 module.exports = {
   getVideo: async (req, res, next) => {
     const GET_VIDEO = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${req.param(
@@ -9,15 +9,15 @@ module.exports = {
 
     axios
       .get(GET_VIDEO)
-      .then(response => {
+      .then((response) => {
         res.json(response.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error", err);
       });
     console.log("Youtube Video Request Made.");
   },
   getPlaylist: async (req, res, next) => {
     console.log("Youtube Playlist Request Made.");
-  }
+  },
 };

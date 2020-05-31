@@ -25,7 +25,7 @@ module.exports = {
         res.sendStatus(500);
         console.log("mailer error", err);
       } else {
-        res.sendStatus(200);
+        res.status(200).json(data);
         console.log("Mailer sent a message");
       }
     });

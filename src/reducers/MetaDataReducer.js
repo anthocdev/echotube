@@ -5,6 +5,7 @@ import {
   ADD_METADATA_ERROR,
 } from "../actions/types";
 
+/* Reducer for metadata requests */
 const DEFAULT_STATE = {
   Metadata: [],
   postdata: [],

@@ -1,9 +1,9 @@
 import { GET_YOUTUBE_VIDEO } from "../actions/types";
-
+/* Reducer for YouTube video info requests */
 const DEFAULT_STATE = {
   fetched: false,
   data: "",
-  errorMessage: ""
+  errorMessage: "",
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -13,7 +13,7 @@ export default (state = DEFAULT_STATE, action) => {
         ...state,
         fetched: true,
         data: action.payload,
-        errorMessage: ""
+        errorMessage: "",
       };
     default:
       return state;

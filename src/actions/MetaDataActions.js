@@ -5,7 +5,7 @@ import {
   ADD_METADATA,
   ADD_METADATA_ERROR,
 } from "./types";
-
+/*Actions for metadata management */
 export const getMetadata = (PlaylistVideoID) => {
   return async (dispatch) => {
     try {

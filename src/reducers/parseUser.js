@@ -1,13 +1,13 @@
 import {
   GET_PROFILE_INFO_SUCCESS,
-  GET_PROFILE_INFO_ERROR
+  GET_PROFILE_INFO_ERROR,
 } from "../actions/types";
-
+/* Reducer for requesting user profile information */
 const DEFAULT_STATE = {
   Nickname: "",
   ProfileImage: "",
   googleID: "",
-  errorMessage: ""
+  errorMessage: "",
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -18,12 +18,12 @@ export default (state = DEFAULT_STATE, action) => {
         Nickname: action.payload.Nickname,
         ProfileImage: action.payload.UserImageLink,
         googleID: action.payload.googleID,
-        errorMessage: ""
+        errorMessage: "",
       };
     case GET_PROFILE_INFO_ERROR:
       return {
         ...state,
-        errorMessage: action.payload
+        errorMessage: action.payload,
       };
     default:
       return state;

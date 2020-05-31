@@ -1,3 +1,4 @@
+/* Specifying types for convenient referencing throughout actions & reducers */
 /* User/Auth Actions */
 export const GOOGLE_OAUTH_LOGIN = "GOOGLE_OAUTH_LOGIN";
 export const GOOGLE_OAUTH_ERROR = "GOOGLE_OAUTH_ERROR";
